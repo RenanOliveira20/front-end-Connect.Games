@@ -1,29 +1,38 @@
-import React, {useState} from 'react'
-import { Background, Buttons, Input, Login, LoginBox, Logo, SignUp, Text } from './styles'
+import React, { useState } from 'react'
 import logo from '../../images/connectLogo.jpeg'
-import { Link } from 'react-router-dom'
-
-
+import { useHistory } from 'react-router'
+import api from '../../api/api'
+import LoginForm from './Login'
+const defaultForm = {
+    email:'',
+    password: ''
+}
 const Home = () => {
-    
+    const history = useHistory()
+    const [formValue, setFormValue] = useState({...defaultForm})
+
+    const handleValues = ({ target: { name, value } }) => {
+        setFormValue({ ...formValue, [name]: value })
+    }
+    const login = async (e) =>{
+        e.preventDefault();
+        try {
+            const login = await api.post('/auth/login',formValue)
+            
+                history.push('/feed')
+                localStorage.setItem('token', login.data.token)
+        } catch (error) {
+            console.error(error)
+            setFormValue({...formValue, ...defaultForm})
+        }   
+    }
     return (
-        <Background>
-            <Logo src ={logo}/>
-            <LoginBox>
-                <Text >
-                    Login
-                </Text>
-                <Input type='text'/>
-                <Text>
-                    Password
-                </Text>
-                <Input type='password' />
-                <Buttons>
-                    <Login type="submit"><Link to = '/feed'>Login</Link></Login>
-                    <SignUp><Link to = '/signup'>Sign Up</Link></SignUp>
-                </Buttons>
-            </LoginBox>
-        </Background>
+        <LoginForm 
+        login={login} 
+        handleValues={handleValues}
+        logo ={logo}
+        formValue = {formValue}
+        />
     )
 }
 export default Home
