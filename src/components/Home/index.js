@@ -17,10 +17,11 @@ const Home = () => {
     const login = async (e) =>{
         e.preventDefault();
         try {
-            const login = await api.post('/auth/login',formValue)
-            
+            const login = await api.login({...formValue})
+            if(login){
                 history.push('/feed')
-                localStorage.setItem('token', login.data.token)
+            }
+            setFormValue({...formValue, ...defaultForm})
         } catch (error) {
             console.error(error)
             setFormValue({...formValue, ...defaultForm})
