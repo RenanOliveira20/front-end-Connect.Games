@@ -10,7 +10,7 @@ const defaultForm = {
 const Home = () => {
     const history = useHistory()
     const [formValue, setFormValue] = useState({...defaultForm})
-
+    
     const handleValues = ({ target: { name, value } }) => {
         setFormValue({ ...formValue, [name]: value })
     }
