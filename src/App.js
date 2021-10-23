@@ -1,8 +1,9 @@
 import { Route, Switch } from 'react-router';
 import Home from './components/Home';
-import './styles.css'
+import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import SignUp from './components/Home/SignUp';
+import GameLobby from './components/GamesLobby';
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <Switch>
         <Route exact path = '/' component ={Home} />
         <Route path = '/signup' component = {SignUp}/>
+        <Route path='/games' component = {GameLobby}/>
       </Switch>
     </div>
   );
