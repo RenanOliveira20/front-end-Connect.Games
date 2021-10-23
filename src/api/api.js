@@ -48,10 +48,18 @@ class api {
                 Authorization: localStorage.getItem('token')
             }})
             console.log(profile.data)
-            return profile
+            return profile.data
         } catch (error) {
             console.log(error)
         }
     }
+    createPost = async (payload) => {
+      try {
+        await this.api.post("/feed", payload);
+        return true;
+      } catch (error) {
+        console.log(error);
+      }
+    };
 }
-export default new api()
+export default new api();
