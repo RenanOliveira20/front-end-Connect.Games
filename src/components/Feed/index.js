@@ -9,9 +9,8 @@ const Feed = () => {
   return (
     <div>
       <NavBar />
-      <Button variant="danger"> Post</Button>
       <FormPost />
-      <CarouselGame />
+      {/* <CarouselGame /> */}
       <CardPost />
     </div>
   );
