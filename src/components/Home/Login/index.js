@@ -5,7 +5,7 @@ import { Buttons, Layout } from "./styles";
 
 const LoginForm = ({ login, handleValues, formValue, logo }) => {
   return (
-    <div className="bg-black vh-100 ">
+    <div className="bg-black vh-100 vw-100">
       <Row className="bg-black">
         <Col>
           <img src={logo} alt="logo" className="mb-3 mt-5 pt-2"></img>
@@ -39,11 +39,16 @@ const LoginForm = ({ login, handleValues, formValue, logo }) => {
               </Form.Group>
             </Form>
             <Buttons>
-              <Button variant="danger" type="submit" onClick={login}>
+              <Button
+                variant="danger"
+                type="submit"
+                onClick={login}
+                className="p-3"
+              >
                 Login
               </Button>
               <Link to="/signup">
-                <Button variant="outline-danger" type="button">
+                <Button variant="outline-danger" type="button" className="p-3">
                   Sign Up
                 </Button>
               </Link>
