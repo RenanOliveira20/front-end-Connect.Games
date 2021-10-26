@@ -11,7 +11,7 @@ const defaultForm = {
 const Home = () => {
     const history = useHistory()
     const [formValue, setFormValue] = useState({...defaultForm})
-
+    
     const handleValues = ({ target: { name, value } }) => {
         setFormValue({ ...formValue, [name]: value })
     }
@@ -20,6 +20,7 @@ const Home = () => {
         try {
             const login = await api.login({...formValue})
             if(login){
+                console.log(login)
                 history.push('/feed')
             }
             setFormValue({...formValue, ...defaultForm})
