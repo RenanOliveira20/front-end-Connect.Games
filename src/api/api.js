@@ -2,7 +2,9 @@ import axios from 'axios';
 class api {
     constructor() {
         this.api = axios.create({
+
             baseURL: 'https://api-connect-games-2.herokuapp.com'
+
         })
         this.api.interceptors.request.use((config) => {
             const token = localStorage.getItem('Authorization');
@@ -14,6 +16,7 @@ class api {
             return config
         })
         this.api.interceptors.response.use((res) => res,
+
         ((error) => {
             if (error.response.status === 400) {
                 localStorage.removeItem('Authorization')
@@ -34,14 +37,15 @@ class api {
         }
     }
     signUp = async (payload) => {
+
         try {
-            console.log('to aqui')
-            await this.api.post('/auth/signup', payload);
-            return true
+            const result = await this.api.get('/games/all')
+            return result
         } catch (error) {
-            console.error(error)
+            console.error(error.message)
         }
     }
+
     getProfile = async () => {
         try {
             const profile = await this.api.get('/profile',{headers:{
@@ -60,5 +64,6 @@ class api {
         console.log(error);
       }
     };
+
 }
 export default new api();
