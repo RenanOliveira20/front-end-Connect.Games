@@ -32,8 +32,8 @@ const NavBar = () => {
   }, [])
   
   return (
-    <Navbar bg="dark" variant="dark" className="px-5">
-      <Navbar.Brand>
+    <Navbar bg="dark" variant="dark"  style={{width:'100%', height: '70px'}}>
+      <Navbar.Brand style={{height : '100%' , marginLeft: '20px'}}>
         <Link to="/feed">
           <Img to="/" src={logo} alt="logo" />
         </Link>

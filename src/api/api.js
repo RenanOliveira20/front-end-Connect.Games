@@ -2,7 +2,7 @@ import axios from 'axios';
 class api {
     constructor() {
         this.api = axios.create({
-            baseURL: 'https://api-connect-games.herokuapp.com/'
+            baseURL: 'https://api-connect-games-2.herokuapp.com'
         })
         this.api.interceptors.request.use((config) => {
             const token = localStorage.getItem('Authorization');
@@ -11,7 +11,6 @@ class api {
                     Authorization: `${token}`
                 }
             }
-            console.log(config)
             return config
         })
         this.api.interceptors.response.use((res) => res,
@@ -27,6 +26,7 @@ class api {
             try {
             const { data } = await this.api.post('/auth/login', payload)
             const { token } = data;
+            console.log(data)
             localStorage.setItem('Authorization', `Bearer ${token}`)
             return true
         } catch (error) {
@@ -47,7 +47,6 @@ class api {
             const profile = await this.api.get('/profile',{headers:{
                 Authorization: localStorage.getItem('token')
             }})
-            console.log(profile.data)
             return profile.data
         } catch (error) {
             console.log(error)

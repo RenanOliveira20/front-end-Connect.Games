@@ -19,6 +19,7 @@ const Home = () => {
         try {
             const login = await api.login({...formValue})
             if(login){
+                console.log(login)
                 history.push('/feed')
             }
             setFormValue({...formValue, ...defaultForm})
