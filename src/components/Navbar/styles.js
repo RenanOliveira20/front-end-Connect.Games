@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { CgProfile } from "react-icons/cg";
 export const Img = styled.img`
-  height: 70px;
+  height: 100%;
 `;
 
 export const Profile = styled(CgProfile)`
   color: #fff;
-  width: 50px;
-  height: 50px;
+  width: auto;
+  height: 100%;
   cursor: pointer;
   @media screen and (max-width: 768px) {
   }
@@ -20,9 +20,11 @@ export const DivButtons = styled.div`
 `;
 
 export const DivProfile = styled.div`
+  margin-right: 20px;
   color: white;
-  font-size: 27px;
+  font-size: 20px;
   display: flex;
+  justify-content: space-around;
   align-items: center;
   span {
     margin: 0 8px;
@@ -33,6 +35,7 @@ export const DivProfile = styled.div`
 
 export const DivNavbar = styled.div`
   display: flex;
+  height: 100%;
   flex-grow: 1;
   align-items: center;
   justify-content: space-between;
@@ -41,8 +44,8 @@ export const DivNavbar = styled.div`
 `;
 
 export const ImgProfile = styled.div`
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   overflow: hidden;
   border-radius: 50%;
   align-items: center;

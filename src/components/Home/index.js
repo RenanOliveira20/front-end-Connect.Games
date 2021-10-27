@@ -3,6 +3,7 @@ import logo from '../../images/connectLogo.jpeg'
 import { useHistory } from 'react-router'
 import api from '../../api/api'
 import LoginForm from './Login'
+
 const defaultForm = {
     email:'',
     password: ''
@@ -19,6 +20,7 @@ const Home = () => {
         try {
             const login = await api.login({...formValue})
             if(login){
+                console.log(login)
                 history.push('/feed')
             }
             setFormValue({...formValue, ...defaultForm})
