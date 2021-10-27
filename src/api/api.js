@@ -3,8 +3,8 @@ class api {
     constructor() {
         this.api = axios.create({
 
-            //baseURL: 'http://localhost:5000'
-            baseURL: 'https://api-connect-games-2.herokuapp.com/'
+            baseURL: 'http://localhost:5000'
+            //baseURL: 'https://api-connect-games-2.herokuapp.com/'
 
         })
 
