@@ -53,15 +53,6 @@ class api {
         }
     }
 
-    getAllGames = async () => {
-        try {
-            const result = await this.api.get('/games/all')
-            return result
-        } catch (error) {
-            console.error(error.message)
-        }
-    }
-
     getOneGame = async (id) => {
 
         try {
