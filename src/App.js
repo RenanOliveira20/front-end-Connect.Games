@@ -18,6 +18,8 @@ const App = () => {
 
         <Route path = '/signup' component = {SignUp}/>
 
+        <Route path = '/feed' component = {Feed}/>
+        <Route path = '/profile' component = {Profile}/>
 
         <Route 
           exact
@@ -25,15 +27,18 @@ const App = () => {
           component = {GameLobby}
         />
 
-        <Route
-          path='/games/teste'
-          component = {GameInfo}
+        <Route 
+          path='/games/:_id'
+          render={(props) => 
+          <GameInfo {...props}/>
+        }
         />
 
-        <Route path = '/feed' component = {Feed}/>
-        <Route path = '/profile' component = {Profile}/>
+        {/* <Route
+          path='/games/teste'
+          component = {GameInfo}
+        /> */}
 
-        <Route path='/games' component = {GameLobby}/>
 
       </Switch>
     </div>

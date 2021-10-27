@@ -9,23 +9,25 @@ export const PageComponent = styled.div`
 
     display: flex;
 
+    width:100%;
+
 `
 
 export const ImageRight = styled.div`
     background-image: url(${imgRight});
     background-repeat: repeat-y;
-   
-    width: 20%;
-   
-    
+    background-size:100%;
+
+    width: 15vw;
+
 ` 
 
 export const ImageLeft = styled.div`
     background-image: url(${imgLeft});
     background-repeat: no-repeat;
+    background-size:100%;
 
-    width: 20%;
-
+    width: 15vw;
 
 `
 
@@ -70,6 +72,8 @@ export const Section = styled.section`
     flex-direction: column;
     align-items: center;
     
+    width: 70vw;
+
     margin: 1vh;
     
     background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(189,183,183,1) 50%, rgba(255,255,255,0) 100%);
@@ -93,6 +97,33 @@ export const Info = styled.p `
     
 `
 
+export const InfoPlat = styled.div`
+
+    display: flex;
+    justify-content:center;
+
+
+    width: 70vw;
+
+    font-size: 1.8vh;
+    
+    background: radial-gradient(circle, rgba(52,52,52,1) 93%, rgba(52,52,52,1) 93%, rgba(126,42,42,0.76234243697479) 100%);
+    
+
+    text-align: center;
+    color: white;
+
+    border-radius: 1.5vw;
+
+`
+
+
+export const PInfo = styled.p`
+
+    margin: 1.5vh;
+
+`
+
 export const InputComment = styled.input`
 
     width: 60vw;
@@ -111,8 +142,3 @@ export const LobbyComment = styled.div`
     margin: 3vh;
 
 `
-
-
-
-
-

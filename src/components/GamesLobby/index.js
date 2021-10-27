@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import api from '../../api/api';
 
 import GameCard from './GamesCard';
+import NavBar from '../Navbar/Navbar'
 
 import { Lobby , List} from "./styles";
 import { ImageLeft, ImageRight, PageComponent } from "../GamesInfo/styles";
@@ -13,7 +14,6 @@ import { ImageLeft, ImageRight, PageComponent } from "../GamesInfo/styles";
 export const GameLobby = () => {
 
     const [games, setGames] = useState([])
-
 
     useEffect(() => {
         async function fetchData(){
@@ -30,16 +30,20 @@ export const GameLobby = () => {
     return (
         <>
 
-
+        <NavBar/>
         <PageComponent>
             
             <ImageRight/>
 
             <Lobby>
                 <List>
+
                     {games.map(game => 
-                        <GameCard {...game}/>
-                        )}
+                        <Link to={`/games/${game._id}`}>
+                            <GameCard {...game}/>
+                        </Link>
+                    )}
+
                 </List>
             </Lobby>
 

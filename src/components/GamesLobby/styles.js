@@ -13,6 +13,7 @@ export const Lobby = styled.section`
 
     display: flex;
     justify-content: center;
-    width: 90%
+    width: 90%;
+
 
 `

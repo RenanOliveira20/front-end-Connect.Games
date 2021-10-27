@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
-// import { useParams } from 'react-roouter-dom';
 
 import api from '../../api/api';
 
-import { Article, Banner, PageComponent, ImageRight, Info, InputComment, LobbyComment, Section, Title, TitleSection, ImageLeft} from "./styles";
+import NavBar from '../Navbar/Navbar'
 
-const GameInfo = () => {
+import { Article, Banner, PageComponent, ImageRight, Info, InfoPlat , InputComment, LobbyComment, Section, Title, TitleSection, ImageLeft, PInfo} from "./styles";
+
+const GameInfo = (props) => {
 
     const [games, setGames] = useState([])
 
-
     useEffect(() => {
         async function  fetchData() {
-            // const {id} = useParams()
-            // console.log(id)
-            const game = await api.getOneGame('3498')
+            
+            const gameDb = await api.get_Id(props.match.params._id)
+                    
+            const game = await api.getOneGame(gameDb.id)
+
             setGames({...game})
         }
         
@@ -24,63 +26,56 @@ const GameInfo = () => {
 
 
     return (
+    <>
+        <NavBar/>
+        <PageComponent>
+                <ImageRight/>
 
-    <PageComponent>
-
-            <ImageRight/>
-
-        <Article>
-                {/* {console.log(games)} */}
-            <Section>
-
-                <Banner src={games.background_image} />
-                <Title>{games.name}</Title>
+            <Article>
                 
-            </Section>            
+                <Section>
 
-            <Section>
+                    <Banner src={games.background_image} />
+                    <Title>{games.name}</Title>
 
-                <TitleSection>Description:</TitleSection>
-                <Info>{games.description}</Info>
+                </Section>            
 
-            </Section>
+                <Section>
 
-            <Section>
+                    <TitleSection>Description:</TitleSection>
+                    <Info>{games.description}</Info>
 
-                <TitleSection>Plataforms:</TitleSection>
+                </Section>
 
-                <Info>
-                    {games.platforms && games.platforms.map( e => 
-                        e.platform && e.platform.name && <p>{e.platform.name}</p>
-                    )}                   
-                </Info>
+                <Section>
 
+                    <TitleSection>Plataforms:</TitleSection>
 
-            </Section>
+                    <InfoPlat>
+                        {games.platforms && games.platforms.map( e => 
+                            e.platform && e.platform.name && <PInfo>{e.platform.name}</PInfo>
+                        )}                   
+                    </InfoPlat>
 
-            <Section>
+                </Section>
 
-                <TitleSection>Comments:</TitleSection>
-                <InputComment></InputComment>
-                <LobbyComment></LobbyComment>
+                <Section>
 
-            </Section>
+                    <TitleSection>Comments:</TitleSection>
+                    <InputComment></InputComment>
+                    <LobbyComment></LobbyComment>
 
-        </Article>
+                </Section>
 
-        <ImageLeft />
+            </Article>
 
-    </PageComponent>
+            <ImageLeft />
 
+        </PageComponent>
+    </>
     )
-
-
 }
 
 
-export default GameInfo
+export default GameInfo;
 
-
-
-
-// 3498
