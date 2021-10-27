@@ -44,7 +44,7 @@ const NavBar = () => {
       </Navbar.Brand>
       <DivNavbar>
         <DivButtons>
-          <Link to="/games/all">
+          <Link to="/games">
             <Button variant="outline-danger">Games</Button>
           </Link>
         </DivButtons>
