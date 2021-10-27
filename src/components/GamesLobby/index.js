@@ -1,56 +1,42 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import api from '../../api/api';
+import api from "../../api/api";
 
-import GameCard from './GamesCard';
+import GameCard from "./GamesCard";
 
-import { Lobby , List} from "./styles";
+import { Lobby, List } from "./styles";
 import { ImageLeft, ImageRight, PageComponent } from "../GamesInfo/styles";
 
-
-
 export const GameLobby = () => {
+  const [games, setGames] = useState([]);
 
-    const [games, setGames] = useState([])
+  useEffect(() => {
+    async function fetchData() {
+      const game = await api.getAllGames();
+      setGames([...game.data]);
+    }
 
+    fetchData();
+  }, []);
 
-    useEffect(() => {
-        async function fetchData(){
-        
-        const game = await api.getAllGames()
-            setGames([...game.data])
- 
-        }
+  return (
+    <>
+      <PageComponent>
+        <ImageRight />
 
-        fetchData()
-    }, [])
+        <Lobby>
+          <List>
+            {games.map((game) => (
+              <GameCard {...game} />
+            ))}
+          </List>
+        </Lobby>
 
-
-    return (
-        <>
-
-
-        <PageComponent>
-            
-            <ImageRight/>
-
-            <Lobby>
-                <List>
-                    {games.map(game => 
-                        <GameCard {...game}/>
-                        )}
-                </List>
-            </Lobby>
-
-            <ImageLeft/>
-
-        </PageComponent>
-
-
-        </>
-    )
-
-}
+        <ImageLeft />
+      </PageComponent>
+    </>
+  );
+};
 
 export default GameLobby;

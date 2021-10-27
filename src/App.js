@@ -22,6 +22,7 @@ const App = () => {
         <Route path="/games/teste" component={GameInfo} />
 
         <Route path="/feed" component={Feed} />
+        
         <Route path="/profile" component={Profile} />
 
         <Route path="/games" component={GameLobby} />

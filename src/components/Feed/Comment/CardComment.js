@@ -9,7 +9,6 @@ const CardComment = ({data, idPost, getPosts}) => {
 
   const deleteComment = async () => {
     try {
-      console.log(data)
       await api.deleteComment( idPost, data._id);
       getPosts();
     } catch (error) {
@@ -19,25 +18,29 @@ const CardComment = ({data, idPost, getPosts}) => {
 
   const reactionLike = async () => {
     try {
-      if( data.likes.splice(data.likes.indexOf(userId), 1)) {
+      if( data.likes.indexOf(userId) !== -1) {
         await api.putReactionsComment(data._id, {like: false})  
       } else {
         await api.putReactionsComment(data._id, {like: true})
       }
     } catch (error) {
       console.log(error)
+    } finally {
+      getPosts()
     }
   }
 
   const reactionDislike = async () => {
     try {
-      if( data.dislikes.includes(userId)) {
+      if( data.dislikes.indexOf(userId) !== -1) {
         await api.putReactionsComment(data._id, {dislike: false})  
       } else {
         await api.putReactionsComment(data._id, {dislike: true})
       }
     } catch (error) {
       console.log(error)
+    } finally {
+      getPosts()
     }
   }
 
