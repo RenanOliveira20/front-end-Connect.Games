@@ -6,9 +6,11 @@ import api from '../../api/api';
 import GameCard from './GamesCard';
 
 import { Lobby , List} from "./styles";
+import { ImageLeft, ImageRight, PageComponent } from "../GamesInfo/styles";
 
 
-const GameLobby = () => {
+
+export const GameLobby = () => {
 
     const [games, setGames] = useState([])
 
@@ -28,16 +30,24 @@ const GameLobby = () => {
     return (
         <>
 
+
+        <PageComponent>
+            
+            <ImageRight/>
+
             <Lobby>
-
                 <List>
-
                     {games.map(game => 
                         <GameCard {...game}/>
-                    )}
-
+                        )}
                 </List>
             </Lobby>
+
+            <ImageLeft/>
+
+        </PageComponent>
+
+
         </>
     )
 

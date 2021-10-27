@@ -18,3 +18,15 @@ export const Card = styled.div `
     }
 
 `
+
+export const Title = styled.h1`
+    font-weight: bold;
+
+    font-size: 3vh;
+
+`
+
+export const SubTitle = styled.h2`
+    font-size:2.5vh;
+
+`

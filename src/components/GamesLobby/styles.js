@@ -4,14 +4,15 @@ export const List = styled.div `
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background: radial-gradient(#868f96 0%, #303841 90%) ;
-    width: 80%;
     
-
+    
 `
 
 export const Lobby = styled.section`
+    font-family: 'Poppins', sans-serif;
+
     display: flex;
     justify-content: center;
+    width: 90%
 
 `
