@@ -3,9 +3,11 @@ class api {
     constructor() {
         this.api = axios.create({
 
-            baseURL: 'https://api-connect-games-2.herokuapp.com'
+            // baseURL: 'http://localhost:5000/'
 
+            baseURL: 'https://api-connect-games-2.herokuapp.com'
         })
+
         this.api.interceptors.request.use((config) => {
             const token = localStorage.getItem('Authorization');
             if (token) {
@@ -24,6 +26,9 @@ class api {
             throw error
         })
         )
+        this.apiOne = axios.create({
+            baseURL: `https://api.rawg.io/api/games/`
+        })
     }
         login = async (payload) => {
             try {
@@ -40,7 +45,19 @@ class api {
 
         try {
             const result = await this.api.get('/games/all')
+
             return result
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
+
+
+    getOneGame = async (id) => {
+
+        try {
+            const result = await this.apiOne.get(`${id}?key=cbb5b86f21b641e194e2cf3dde368951`)
+            return result.data
         } catch (error) {
             console.error(error.message)
         }
