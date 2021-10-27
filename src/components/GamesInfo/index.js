@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-roouter-dom';
+// import { useParams } from 'react-roouter-dom';
 
 import api from '../../api/api';
 
@@ -12,8 +12,8 @@ const GameInfo = () => {
 
     useEffect(() => {
         async function  fetchData() {
-            const {id} = useParams()
-            console.log(id)
+            // const {id} = useParams()
+            // console.log(id)
             const game = await api.getOneGame('3498')
             setGames({...game})
         }
