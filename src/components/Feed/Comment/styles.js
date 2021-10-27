@@ -14,16 +14,6 @@ export const Trash = styled(FaTrashAlt)`
   }
 `;
 
-export const ImageAdd = styled(RiImageAddFill)`
-  color: #fff;
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-  @media screen and (max-width: 768px) {
-    
-  }
-`;
-
 export const Like = styled(AiFillLike)`
   color: #fff;
   width: 25px;
@@ -44,7 +34,7 @@ export const Dislike = styled(AiFillDislike)`
   }
 `;
 
-export const Post = styled.div`
+export const DivFormComments = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -52,25 +42,12 @@ export const Post = styled.div`
 
   }
 `;
-
-export const DivFormPost = styled.div`
+export const Comment = styled.div`
+  margin: 30px;
   width: 100%;
-  display: flex;  
+  display: flex;
   justify-content: center;
   @media screen and (max-width: 768px) {
 
   }
 `;
-
-export const Comments = styled.div`
-  width: 100%;
-  display: flex;  
-  flex-direction: column;
-  align-items: center;
-  @media screen and (max-width: 768px) {
-
-  }
-`;
-
-
-
