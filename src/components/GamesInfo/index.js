@@ -12,7 +12,6 @@ const GameInfo = () => {
         async function  fetchData() {
             const game = await api.getOneGame('3498')
             setGames({...game})
-           
         }
         
         fetchData()
@@ -23,7 +22,7 @@ const GameInfo = () => {
     return (
 
     <PageComponent>
-        
+
             <ImageRight/>
 
         <Article>
