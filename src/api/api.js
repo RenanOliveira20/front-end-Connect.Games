@@ -60,5 +60,13 @@ class api {
         console.log(error);
       }
     };
+    getPost = async (id) => {
+        try {
+            const post = await this.api.get(`/post/${id}`);
+            return post.data
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
 }
 export default new api();
