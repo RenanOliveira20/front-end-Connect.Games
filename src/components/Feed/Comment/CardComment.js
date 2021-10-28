@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import api from "../../../api/api";
-import { Trash, Like, Dislike, Comment } from "./styles";
+import { Trash, Like, Dislike, Comment, LikeDislike, Profile, ImgProfile } from "./styles";
 import { Card, Button } from "react-bootstrap";
 
-const CardComment = ({data, idPost, getPosts}) => {
+const CardComment = ({data: comment, post, getPosts}) => {
   
   const userId = localStorage.getItem("userId")
 
   const deleteComment = async () => {
     try {
-      await api.deleteComment( idPost, data._id);
+      await api.deleteComment( post._id, comment._id);
       getPosts();
     } catch (error) {
       console.log(error);
@@ -18,10 +18,10 @@ const CardComment = ({data, idPost, getPosts}) => {
 
   const reactionLike = async () => {
     try {
-      if( data.likes.indexOf(userId) !== -1) {
-        await api.putReactionsComment(data._id, {like: false})  
+      if( comment.likes.indexOf(userId) !== -1) {
+        await api.putReactionsComment(comment._id, {like: false})  
       } else {
-        await api.putReactionsComment(data._id, {like: true})
+         await api.putReactionsComment(comment._id, {like: true})
       }
     } catch (error) {
       console.log(error)
@@ -32,10 +32,10 @@ const CardComment = ({data, idPost, getPosts}) => {
 
   const reactionDislike = async () => {
     try {
-      if( data.dislikes.indexOf(userId) !== -1) {
-        await api.putReactionsComment(data._id, {dislike: false})  
+      if( comment.dislikes.indexOf(userId) !== -1) {
+        await api.putReactionsComment(comment._id, {dislike: false})  
       } else {
-        await api.putReactionsComment(data._id, {dislike: true})
+        await api.putReactionsComment(comment._id, {dislike: true})
       }
     } catch (error) {
       console.log(error)
@@ -47,8 +47,20 @@ const CardComment = ({data, idPost, getPosts}) => {
   return (
     <Comment>
       <Card style={{ width: "70%" }}>
+      <ImgProfile>
+              {post.user.profilePicture ? (
+                <img src={post.user.profilePicture} alt={post.user.username} />
+              ) : (
+                <Profile />
+              )}
+            </ImgProfile>
+      <span className= "p-3">{post.user.username}</span>
         <Card.Body>
-          <Card.Text>{data.text}</Card.Text>
+          <Card.Text>{comment.text}</Card.Text>
+          <LikeDislike>
+          <p className= "m-2">liked: {comment.likes.length}</p> 
+          <p className= "m-2">did not like: {comment.dislikes.length}</p>
+          </LikeDislike>
           <Button variant="danger m-1" onClick={reactionLike}>
             <Like />
           </Button>
