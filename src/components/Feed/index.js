@@ -1,8 +1,13 @@
 import { React, useState, useEffect } from "react";
+
 import NavBar from "../Navbar/Navbar";
 import CardPost from "./Post/CardPost";
 import CarouselGame from "./CarouselGames/CarouselGame";
 import FormPost from "./Post/ReviewFormPost";
+
+import { ImageRight, ImageLeft, Article, Section } from '../GamesInfo/styles'
+import { PageComponent } from './styles'
+
 import api from "../../api/api";
 
 const Feed = () => {
@@ -22,8 +27,38 @@ const Feed = () => {
     getPosts(); 
   }, []);
   return (
-    <div>
+    <>
+    
       <NavBar />
+
+      <PageComponent>
+
+        <ImageRight/>
+
+        <Article>
+        
+          <Section>
+
+            <FormPost getPosts= {getPosts} />
+
+          </Section>
+
+          <Section>
+
+            {posts.map((e) => {
+              return <CardPost key={e._id} data={e} getPosts={getPosts}/>
+            })}
+
+          </Section> 
+        
+        </Article>        
+
+        <ImageLeft/>
+
+      </PageComponent>
+
+    </>
+
       <FormPost getPosts= {getPosts} />
       <CarouselGame />
      <div>
