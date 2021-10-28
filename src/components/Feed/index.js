@@ -43,8 +43,6 @@ const Feed = () => {
 
           </Section>
 
-          {/* <CarouselGame /> */}
-
           <Section>
 
             {posts.map((e) => {
@@ -60,6 +58,16 @@ const Feed = () => {
       </PageComponent>
 
     </>
+
+      <FormPost getPosts= {getPosts} />
+      <CarouselGame />
+     <div>
+       {posts.map((e) => {
+     return <CardPost key={e._id} data={e} getPosts={getPosts}/>
+       })}
+     </div> 
+      
+    </div>
   );
 };
 
