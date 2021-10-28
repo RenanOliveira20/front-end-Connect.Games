@@ -11,6 +11,7 @@ import { ImageLeft, ImageRight, PageComponent } from "../GamesInfo/styles";
 
 
 
+
 export const GameLobby = () => {
 
     const [games, setGames] = useState([])
@@ -36,6 +37,10 @@ export const GameLobby = () => {
             <ImageRight/>
 
             <Lobby>
+                    {/* <input
+                        type='text'
+                        placeholder='Search a game...'
+                    /> */}
                 <List>
 
                     {games.map(game => 

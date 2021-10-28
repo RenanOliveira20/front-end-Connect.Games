@@ -74,7 +74,7 @@ class api {
 
     getOneGame = async (id) => {
         try {
-            const result = await this.apiOne.get(`${id}?key=cbb5b86f21b641e194e2cf3dde368951`)
+            const result = await this.apiOne.get(`${id}?key=21e09e9887214441b5293a2ef6e8d144`)
             return result.data
         } catch (error) {
             console.error(error.message)

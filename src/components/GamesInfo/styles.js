@@ -10,7 +10,7 @@ export const PageComponent = styled.div`
     display: flex;
 
     width:100%;
-
+    
 `
 
 export const ImageRight = styled.div`
@@ -24,7 +24,7 @@ export const ImageRight = styled.div`
 
 export const ImageLeft = styled.div`
     background-image: url(${imgLeft});
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size:100%;
 
     width: 15vw;
@@ -52,9 +52,9 @@ export const Banner = styled.img `
 export const Title = styled.h1`
   
     font-weight: bold;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 
     padding: 2vh 0;
-
 
 `
 
@@ -102,21 +102,19 @@ export const InfoPlat = styled.div`
     display: flex;
     justify-content:center;
 
-
-    width: 70vw;
+    width: 55vw;
+    margin: 1vh;
 
     font-size: 1.8vh;
     
     background: radial-gradient(circle, rgba(52,52,52,1) 93%, rgba(52,52,52,1) 93%, rgba(126,42,42,0.76234243697479) 100%);
     
-
     text-align: center;
     color: white;
 
     border-radius: 1.5vw;
 
 `
-
 
 export const PInfo = styled.p`
 
@@ -126,9 +124,11 @@ export const PInfo = styled.p`
 
 export const InputComment = styled.input`
 
-    width: 60vw;
-    height: 20vh;
+    width: 40vw;
+    height: 10vh;
 
+    border-radius: 1.5vh;
+    border-color: red;
 
 `
 
@@ -136,8 +136,8 @@ export const LobbyComment = styled.div`
 
     background-color: green;
 
-    width: 60vw;
-    height:40vh;
+    width: 40vw;
+    height: 40vh;
 
     margin: 3vh;
 

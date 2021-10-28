@@ -12,23 +12,23 @@ export const Card = styled.div `
     align-items: center;
     justify-content: space-around;
 
-    color: white;
 
     img{
         width: 80%
     }
 
+
 `
 
-export const Title = styled.h1`
+export const Title = styled.a`
+
     font-weight: bold;
-
     font-size: 3vh;
-    text-decoration:none;
 
 `
 
-export const SubTitle = styled.h2`
+export const SubTitle = styled.a`
+
     font-size:2.5vh;
-    text-decoration:none;
+
 `

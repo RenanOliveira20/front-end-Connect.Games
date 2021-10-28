@@ -9,6 +9,7 @@ import { Article, Banner, PageComponent, ImageRight, Info, InfoPlat , InputComme
 const GameInfo = (props) => {
 
     const [games, setGames] = useState([])
+    const [comments, setComments] = useState([])
 
     useEffect(() => {
         async function  fetchData() {
@@ -18,60 +19,72 @@ const GameInfo = (props) => {
             const game = await api.getOneGame(gameDb.id)
 
             setGames({...game})
+            setComments({...gameDb})
         }
         
         fetchData()
           
-    }, [games])
+    }, [])
 
 
     return (
     <>
-        <NavBar/>
-        <PageComponent>
+        {games.id?
+        <>
+            <NavBar/>
+            <PageComponent>
+
                 <ImageRight/>
 
-            <Article>
-                
-                <Section>
+                <Article>
+                    
+                    <Section>
 
-                    <Banner src={games.background_image} />
-                    <Title>{games.name}</Title>
+                        <Banner src={games.background_image} />
+                        <Title>{games.name}</Title>
+                        <div>
+                            <h2>{games.rating}</h2>
+                        </div>
 
-                </Section>            
+                    </Section>            
 
-                <Section>
+                    <Section>
 
-                    <TitleSection>Description:</TitleSection>
-                    <Info>{games.description}</Info>
+                        <TitleSection>Description:</TitleSection>
+                        <Info>{games.description}</Info>
 
-                </Section>
+                    </Section>
 
-                <Section>
+                    <Section>
 
-                    <TitleSection>Plataforms:</TitleSection>
+                        <TitleSection>Plataforms:</TitleSection>
 
-                    <InfoPlat>
-                        {games.platforms && games.platforms.map( e => 
-                            e.platform && e.platform.name && <PInfo>{e.platform.name}</PInfo>
-                        )}                   
-                    </InfoPlat>
+                        <InfoPlat>
+                            {games.platforms && games.platforms.map( e => 
+                                e.platform && e.platform.name && <PInfo>{e.platform.name}</PInfo>
+                            )}                   
+                        </InfoPlat>
 
-                </Section>
+                    </Section>
 
-                <Section>
+                    <Section>
 
-                    <TitleSection>Comments:</TitleSection>
-                    <InputComment></InputComment>
-                    <LobbyComment></LobbyComment>
+                        <TitleSection>Comments:</TitleSection>
+                        <InputComment
+                            type='text'
+                            placeholder='Post a comment here...'
+                        ></InputComment>
+                        <LobbyComment>{comments.comments}</LobbyComment>
 
-                </Section>
+                    </Section>
 
-            </Article>
+                </Article>
 
-            <ImageLeft />
+                <ImageLeft />
 
-        </PageComponent>
+            </PageComponent>
+        </> : <h1> Loading... </h1>
+        }
     </>
     )
 }
