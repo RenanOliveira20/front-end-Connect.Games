@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import api from "../../../api/api";
 import { Form, Button } from "react-bootstrap";
 import { ImageAdd, DivFormPost } from "./styles";
@@ -9,15 +9,15 @@ const FormPost = (props) => {
 
   const [post, setPost] = useState({
     text: "",
-    imageUrl: "",
+    image: "",
   });
 
-  const createPost = async () => {
+  const createPost = async (e) => {
     try {
       await api.createPost({ ...post });
       setPost({
         text: "",
-        imageUrl: "",
+        image: "",
       });
       getPosts()
     } catch (error) {
@@ -27,9 +27,12 @@ const FormPost = (props) => {
 
   const postText = ({ target }) => {
     setPost({ ...post, text: target.value });
-    // const postImage = new FormData();
-    // postImage.append('imageUrl', arquivo-de-imagem);
   };
+  
+  const postImage = ({target}) => {
+    setPost({...post, image: target.files[0]})
+  }
+  
   
   return (
     <DivFormPost>
@@ -46,9 +49,12 @@ const FormPost = (props) => {
         <Button variant="danger m-2" onClick={createPost}>
           Send
         </Button>
-        <Button variant="danger ">
-          <ImageAdd />
-        </Button>
+        <label htmlFor= "1" className= "btn btn-danger">
+        {/* <Button variant="danger"> */}
+          <ImageAdd/>  
+        {/* </Button> */}
+        </label>
+        <input type='file' id="1" onChange={postImage} style={{display: "none"}} />
       </Form>
     </DivFormPost>
   );

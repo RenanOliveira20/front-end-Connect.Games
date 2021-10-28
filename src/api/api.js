@@ -83,11 +83,14 @@ class api {
             throw error.response
         }
     }
-    createPost = async (payload) => {
+    createPost = async ({text, image}) => {
+        const uploadData = new FormData();
+    uploadData.append('image', image)
+    uploadData.append('text', text)
       try {
-        await this.api.post("/feed", payload);
+        await this.api.post("/feed", uploadData);
       } catch (error) {
-        console.log(error);
+        console.log(error); 
         throw error.response
       }
     };

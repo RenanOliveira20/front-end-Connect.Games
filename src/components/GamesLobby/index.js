@@ -28,7 +28,7 @@ export const GameLobby = () => {
         <Lobby>
           <List>
             {games.map((game) => (
-              <GameCard {...game} />
+              <GameCard key={game._id} {...game} />
             ))}
           </List>
         </Lobby>

@@ -25,7 +25,7 @@ const Feed = () => {
     <div>
       <NavBar />
       <FormPost getPosts= {getPosts} />
-      {/* <CarouselGame /> */}
+      <CarouselGame />
      <div>
        {posts.map((e) => {
      return <CardPost key={e._id} data={e} getPosts={getPosts}/>
