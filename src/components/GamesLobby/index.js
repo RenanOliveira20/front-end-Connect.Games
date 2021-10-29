@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import api from "../../api/api";
+
 import GameCard from './GamesCard';
-import NavBar from '../Navbar/Navbar'
+import NavBar from '../Navbar/Navbar';
+import Footer from '../Footer'
+
 import { Lobby, List } from "./styles";
 import { ImageLeft, ImageRight, PageComponent } from "../GamesInfo/styles";
+
+
 export const GameLobby = () => {
+
     const [games, setGames] = useState([])
+
     useEffect(() => {
         async function fetchData(){
         
@@ -14,30 +21,46 @@ export const GameLobby = () => {
             setGames([...game.data])
  
         }
+
         fetchData()
     }, [])
+
+
     return (
         <>
-        <NavBar/>
-        <PageComponent>
+            <NavBar/>
+            <PageComponent>
+                
+                <ImageRight/>
+
+                <Lobby>
+                        {/* <input
+                            type='text'
+                            placeholder='Search a game...'
+                        /> */}
+                    <List>
+
+                        {games.map(game => 
+                            <Link to={`/games/${game._id}`}>
+                                <GameCard {...game}/>
+                            </Link>
+                        )}
+
+
+                    </List>
+                </Lobby>
+
+                <ImageLeft/>
+
+            </PageComponent>
             
-            <ImageRight/>
-            <Lobby>
-                    {/* <input
-                        type='text'
-                        placeholder='Search a game...'
-                    /> */}
-                <List>
-                    {games.map(game => 
-                        <Link to={`/games/${game._id}`}>
-                            <GameCard {...game}/>
-                        </Link>
-                    )}
-                </List>
-            </Lobby>
-            <ImageLeft/>
-        </PageComponent>
+            <Footer />
+
         </>
     )
+
 }
-export default GameLobby;  
+
+export default GameLobby;
+
+

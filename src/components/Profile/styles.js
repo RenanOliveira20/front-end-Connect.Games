@@ -18,20 +18,23 @@ export const ImageContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    color: white;
+
     img {
-         height: 100px;
+        height: 100px;
         width: 100px;
         }
 
 `;
-    export const FollowContainer = styled.div`
+export const FollowContainer = styled.div`
     padding-top: 2%;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: space-space-between ;
-        flex-direction:column;
-        `;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between ;
+    flex-direction:column;
+`;
 export const UserConfig = styled.div`
     display: flex;
     justify-content: space-evenly ;
@@ -40,13 +43,13 @@ export const UserConfig = styled.div`
 `
 export const CountValues = styled.div`
     
-        display: flex;
-        justify-content: space-evenly    ;
+    display: flex;
+    justify-content: space-evenly;
 `
 export const Container = styled.div`
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: center    ;
+    justify-content: center;
 
 `

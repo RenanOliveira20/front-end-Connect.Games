@@ -1,11 +1,10 @@
 import { React, useState, useEffect } from "react";
 
-import { useHistory } from "react-router";
-
 import NavBar from "../Navbar/Navbar";
-import Posts from "../Profile/List/Post";
 import CarouselGame from "./CarouselGames/CarouselGame";
 import FormPost from "./Post/ReviewFormPost";
+import CardComment from "./Comment/CardComment";
+
 
 import { ImageRight, ImageLeft, Article, Section } from '../GamesInfo/styles'
 import { PageComponent } from './styles'
@@ -15,7 +14,7 @@ import api from "../../api/api";
 const Feed = () => {
 
   const [posts, setPosts] = useState([]);
-  const [user, setUser] = useState({})
+
   const getPosts = async () => {
     try {
       const postsFromDb = await api.getPost();
@@ -24,24 +23,14 @@ const Feed = () => {
       console.log(error);
     }
   };
-  const history = useHistory()
-  const validate = async (data) => {
-    if (!data) history.push('/');
-    return true
-}
+
   useEffect(() => {
     getPosts(); 
   }, []);
-  useEffect(() => {
-    const fetchData = async () => {
-        const data = await api.getProfile();
-        if (validate(data)) {
-            setUser({ ...user, ...data })
-        }
-    }
-    fetchData()
-}, [user]);
+
+
   return (
+ 
     <>
     
       <NavBar />
@@ -58,11 +47,14 @@ const Feed = () => {
 
           </Section>
 
+            <CarouselGame />
+
           <Section>
 
-          {posts.map((e) => {
-     return <Posts key={e._id} user={user} post={`${e._id}`}/>
-       })}
+            {posts.map((e) => {
+              return <CardComment key={e._id} data={e} getPosts={getPosts}/>
+            })}
+
 
           </Section> 
         
@@ -73,6 +65,7 @@ const Feed = () => {
       </PageComponent>
 
     </>
+
   );
 };
 

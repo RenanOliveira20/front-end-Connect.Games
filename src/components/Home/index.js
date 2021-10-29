@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
-import logo from '../../images/connectLogo.jpeg'
-import { useHistory } from 'react-router'
-import api from '../../api/api'
-import LoginForm from './Login'
+import React, { useState } from 'react';
+import { useHistory } from 'react-router';
+
+import api from '../../api/api';
+
+import LoginForm from './Login';
+
+import logo from '../../images/connectLogo.jpeg';
+
 
 const defaultForm = {
     email:'',
@@ -38,4 +42,4 @@ const Home = () => {
         />
     )
 }
-export default Home
+export default Home;
