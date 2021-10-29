@@ -8,7 +8,9 @@ import Footer from '../Footer';
 import CommentsGames from './CardComment/ReviewCommentsGames';
 import CardComment from './CardComment/index';
 
-import { Article, Banner, PageComponent, ImageRight, Info, InfoPlat , InputComment, LobbyComment, Section, Title, TitleSection, ImageLeft, PInfo} from "./styles";
+import { Article, Banner, PageComponent, ImageRight, Info, InfoPlat, InputComment, LobbyComment, Section, Title, TitleSection, ImageLeft, PInfo, ButtonFavorite, ButtonUnFavorite, TitleContainer} from "./styles";
+
+
 
 const GameInfo = (props) => {
 
@@ -18,32 +20,40 @@ const GameInfo = (props) => {
     
     const userId = localStorage.getItem('userId')
 
-    useEffect(() => {
-        async function  fetchData() {
-            
-            const gameDb = await api.get_Id(props.match.params._id)
-            
-            const game = await api.getOneGame(gameDb.id)
 
-            setGames({...game})
-            setComments({...gameDb})
-        }
+    const gameDb = async () => {
+        const gameDb = await api.get_Id(props.match.params._id)
+        setComments({ ...gameDb })
+
+        const game = await api.getOneGame(gameDb.id)
+        setGames({...game})
         
-        fetchData()
-          
-    }, [comments])
+    }
+    
+    const updateGame = async () => {
+        const gameDb = await api.get_Id(props.match.params._id)
+        setComments({...gameDb})
+
+    }
+
+    useEffect(() => {
+        gameDb()
+        updateGame()
+    }, [])
 
     const reactionFavorite = async () => {
         try {
             if(comments.userfavorites.indexOf(userId) !== -1) {
                 await api.putGameUserFavorite(comments._id, { favorite: false });
-                await api.putUserGameFavorite(comments._id, {favorite: false});
+                await api.putUserGameFavorite(comments._id, { favorite: false});
             } else {
                 await api.putGameUserFavorite(comments._id, { favorite: true });
                 await api.putUserGameFavorite(comments._id, { favorite: true });
             }
         } catch (error) {
             console.log(error)
+        } finally {
+            updateGame()
         }
     }
 
@@ -61,11 +71,15 @@ const GameInfo = (props) => {
                     <Section>
 
                         <Banner src={games.background_image} />
-                        <Title>{games.name}</Title>
-                        <div>
-                            <h2>{games.rating}</h2>
-                            <button onClick={reactionFavorite}> Favorite Game </button>
-                        </div>
+                        <TitleContainer>
+                            <Title>{games.name}</Title>
+                                
+                            {comments.userfavorites.indexOf(userId) !== -1?                             
+                                <ButtonFavorite onClick={reactionFavorite}/>
+                                : <ButtonUnFavorite onClick={reactionFavorite}/>
+                            }
+                        </TitleContainer>
+                        <h4>Rating: {games.rating}</h4>
 
                     </Section>            
 
