@@ -57,7 +57,7 @@ const Feed = () => {
             <FormPost getPosts= {getPosts} />
 
           </Section>
-
+         <CarouselGame/>
           <Section>
 
           {posts.map((e) => {
