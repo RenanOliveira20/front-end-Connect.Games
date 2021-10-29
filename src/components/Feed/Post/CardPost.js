@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import api from "../../../api/api";
-import { Trash, Like, Dislike, Post, Comments } from "./styles";
+import { Trash, Like, Dislike, Post, Comments, LikeDislike, Profile, ImgProfile } from "./styles";
 import { Card, Button } from "react-bootstrap";
 import FormComment from "../Comment/ReviewFormComment";
 import CardComment from "../Comment/CardComment";
 
 const CardPost = (props) => {
-  const { data, getPosts } = props;
+  const { data: post, getPosts } = props;
   const [showFormComment, setShowFormComment] = useState(false);
   
   const userId = localStorage.getItem("userId")
-  
+
   const deletePost = async () => {
     try {
-      await api.deletePost(data._id);
+      await api.deletePost(post._id);
       getPosts();
     } catch (error) {
       console.log(error);
@@ -22,10 +22,10 @@ const CardPost = (props) => {
 
   const reactionLike = async () => {
     try {
-      if( data.likes.indexOf(userId) !==  -1 ) {
-        await api.putReactionsPost(data._id, {like: false})  
+      if( post.likes.indexOf(userId) !==  -1 ) {
+        await api.putReactionsPost(post._id, {like: false})  
       } else {
-        await api.putReactionsPost(data._id, {like: true})
+        await api.putReactionsPost(post._id, {like: true})
       }
     } catch (error) {
       console.log(error)
@@ -37,10 +37,10 @@ const CardPost = (props) => {
 
   const reactionDislike = async () => {
     try { 
-      if( data.dislikes.indexOf(userId) !== -1) {
-        await api.putReactionsPost(data._id, {dislike: false})  
+      if( post.dislikes.indexOf(userId) !== -1) {
+        await api.putReactionsPost(post._id, {dislike: false})  
       } else {
-        await api.putReactionsPost(data._id, {dislike: true})
+        await api.putReactionsPost(post._id, {dislike: true})
       }
     } catch (error) {
       console.log(error)
@@ -51,11 +51,22 @@ const CardPost = (props) => {
 
   return (
     <Post>
-      <span>{data.username}</span>
-      <Card style={{ width: "50%" }}>
-        {data.imageUrl ? <Card.Img variant="top" src={data.imageUrl} /> : null}
+      <Card style={{ width: "50%", height: "50%" }}>
+      <ImgProfile>
+              {post.user.profilePicture ? (
+                <img src={post.user.profilePicture} alt={post.user.username} />
+              ) : (
+                <Profile />
+              )}
+            </ImgProfile>
+      <span className= "p-3">{post.user.username}</span>
+          <Card.Text>{post.text}</Card.Text>
+        {post.imageUrl ? <Card.Img variant="top" src={post.imageUrl} /> : null}
         <Card.Body>
-          <Card.Text>{data.text}</Card.Text>
+          <LikeDislike>
+          <p className= "m-2">liked: {post.likes.length}</p> 
+          <p className= "m-2">did not like: {post.dislikes.length}</p>
+          </LikeDislike>
           <Button variant="danger m-1" onClick={reactionLike}>
             <Like />
           </Button>
@@ -71,7 +82,7 @@ const CardPost = (props) => {
         </Card.Body>
         {showFormComment ? (
           <FormComment
-            idPost={data._id} getPosts={getPosts}
+            idPost={post._id} getPosts={getPosts}
             onCancel={() => setShowFormComment(false) }
           />
         ) : (
@@ -80,8 +91,8 @@ const CardPost = (props) => {
           </Button>
         )}
         <Comments>
-          {data.comments.map((e) => {
-            return <CardComment key={e._id} data={e} getPosts={getPosts} idPost={data._id} />;
+          {post.comments.map((e) => {
+            return <CardComment key={e._id} data={e} getPosts={getPosts} post={post} />;
           })}
         </Comments>
       </Card>

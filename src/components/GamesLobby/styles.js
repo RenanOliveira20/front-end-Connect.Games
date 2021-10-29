@@ -9,10 +9,10 @@ export const List = styled.div `
 `
 
 export const Lobby = styled.section`
-    font-family: 'Poppins', sans-serif;
 
     display: flex;
     justify-content: center;
-    width: 90%
+    width: 90%;
+
 
 `
