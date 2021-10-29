@@ -9,6 +9,7 @@ import api from '../../api/api';
 import Nav from '../Navbar/Navbar';
 import List from './List';
 import Follow from './Follow';
+import Footer from '../Footer'
 
 import { FollowContainer, ProfileCard, Container, UserConfig, CountValues, ImageContainer } from './styles';
 import { PageComponent, Section, Article, ImageRight, ImageLeft} from '../GamesInfo/styles';
@@ -76,6 +77,7 @@ const Profile = () => {
             <ImageLeft/>
 
         </PageComponent>
+        <Footer/>
     </>
     );
 }

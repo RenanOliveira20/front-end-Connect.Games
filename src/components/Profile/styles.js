@@ -22,7 +22,7 @@ export const ImageContainer = styled.div`
     color: white;
 
     img {
-         height: 100px;
+        height: 100px;
         width: 100px;
         }
 
