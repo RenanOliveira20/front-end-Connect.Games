@@ -48,13 +48,13 @@ const CardComment = ({ data: comment, post, getPosts }) => {
     <Comment>
       <Card style={{ width: "70%" }}>
         <ImgProfile>
-          {post.user.profilePicture ? (
+          {post && post.user && post.user.profilePicture ? (
             <img src={post.user.profilePicture} alt={post.user.username} />
           ) : (
             <Profile />
           )}
         </ImgProfile>
-        <span className="p-3">{post.user.username}</span>
+        <span className="p-3">{post && post.user && post.user.username}</span>
         <Card.Body>
           <Card.Text>{comment.text}</Card.Text>
           <LikeDislike>
