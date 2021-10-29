@@ -7,17 +7,17 @@ export const ListContainer = styled.div`
     height: 50px;
     width: 50%;
     margin-left: 25%;
-    background-color: white;
+    background-color: grey;
     border-bottom: 1px solid lightgrey; 
     display: flex;
     justify-content: space-around;
     button{
-        background-color: white;
+        background-color: lightgrey;
         border: none;
         width: 50%;
         height: 100%;
         &:hover{
-            background-color: #F8F8FF
+            background-color:  #F0F8FF
         }
     }
 `

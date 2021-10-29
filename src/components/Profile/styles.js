@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ProfileCard = styled.div` 
     width: 50%;
     height: 40%;
-    background-color: white;
+    background-color: lightgrey;
     margin-top: 1%;
     margin-left: 25%;
     border-bottom: 1px solid lightgrey;
@@ -17,14 +17,10 @@ export const ImageContainer = styled.div`
     margin-bottom: 1%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center
+    align-items: center;
     img {
-        height: auto;
-        width: 100%;
-        margin-top: 5%;
-        margin-left: 5%;
-        border: 1px solid lightgrey;
+         height: 100px;
+        width: 100px;
         }
 
 `;
@@ -40,9 +36,7 @@ export const UserConfig = styled.div`
     display: flex;
     justify-content: space-evenly ;
     margin-bottom: 3%;
-    svg {
-        
-    }
+    
 `
 export const CountValues = styled.div`
     

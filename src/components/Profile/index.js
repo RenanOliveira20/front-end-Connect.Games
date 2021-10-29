@@ -25,14 +25,14 @@ const Profile = () => {
         fetchData()
     }, [profile]);
     return (
-        <div className='bg-light ' style={{paddingBottom : '10%', height: 'vh100'}}>
+        <div  style={{paddingBottom : '10%', height: 'vh100' , backgroundColor: '#f2f2f2'}}>
             <Nav />
             <ProfileCard>
                 <Container>
                     <ImageContainer>
-                    {profile && profile.profilePicture && <Image rounded src={profile.profilePicture}alt='image profile' />}
-                        <p><b>{profile && profile.name}</b></p>
-                        {profile && profile.biography ? <p>{profile.biography}</p> : <Button variant='outline-danger' style={{ width: '80%', marginLeft: '10%' , fontSize: '15px'}}>Biography &ensp;<BsFillPencilFill /></Button>}
+                    {profile && profile.profilePicture && <Image roundedCircle src={profile.profilePicture}alt='image profile' />}
+                        <p style={{fontSize : '25px'}}><b>{profile && profile.name}</b></p>
+                        {profile && profile.biography ? <p>{profile.biography}</p> : <Button variant='outline-danger' style={{ width: '80%', marginLeft: '10%' , fontSize: '12px'}}>Biography &ensp;<BsFillPencilFill /></Button>}
                     </ImageContainer>
                     <FollowContainer>
                         <UserConfig>

@@ -1,7 +1,5 @@
-import { buildQueries } from '@testing-library/react'
-import style from 'dom-helpers/css'
 import React, { useState } from 'react'
-import Posts from './Posts'
+import Posts from './Post'
 import { FavoriteIcon, FeedIcon, ListContainer } from './style'
 
 const List = ({user}) => {
@@ -41,7 +39,7 @@ const List = ({user}) => {
             {
                 button.feed ?
                     user && user.posts.map((e, i)=>{
-                        return <Posts key={i} post = {e}/>
+                        return <Posts key={i} post = {e} user = {user}/>
                     })
                     :
                     null

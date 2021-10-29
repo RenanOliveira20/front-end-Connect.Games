@@ -1,17 +1,51 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import NavBar from "../Navbar/Navbar";
-import CardPost from "./Post/CardPost";
-import CarouselGame from "./CarouselGame";
+import Posts from "../Profile/List/Post";
+import CarouselGame from "./CarouselGames/CarouselGame";
 import FormPost from "./Post/ReviewFormPost";
-import { Button } from "react-bootstrap";
+import api from "../../api/api";
 
 const Feed = () => {
+
+  const [posts, setPosts] = useState([]);
+  const [user, setUser] = useState({})
+  const getPosts = async () => {
+    try {
+      const postsFromDb = await api.getPost();
+      setPosts(postsFromDb)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const history = useHistory()
+  const validate = async (data) => {
+    if (!data) history.push('/');
+    return true
+}
+  useEffect(() => {
+    getPosts(); 
+  }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+        const data = await api.getProfile();
+        if (validate(data)) {
+            setUser({ ...user, ...data })
+        }
+    }
+    fetchData()
+}, [user]);
   return (
     <div>
       <NavBar />
-      <FormPost />
+      <FormPost getPosts= {getPosts} />
       {/* <CarouselGame /> */}
-      <CardPost />
+     <div>
+       {posts.map((e) => {
+     return <Posts key={e._id} user={user} post={`${e._id}`}/>
+       })}
+     </div> 
+      
     </div>
   );
 };
