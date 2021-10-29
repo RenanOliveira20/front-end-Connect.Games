@@ -4,8 +4,6 @@ import Posts from './Post';
 
 import { FavoriteIcon, FeedIcon, ListContainer, ListPage } from './style';
 
-
-
 const List = ({user}) => {
     const [button, setButton] = useState({ feed: true, favorite: false })
     const handleValues = ({ target: { name } }) => {
@@ -27,8 +25,10 @@ const List = ({user}) => {
         }
     }
 
+
     return (
         <ListPage>
+
             <ListContainer>
                 {
                     button.feed ?
@@ -49,6 +49,7 @@ const List = ({user}) => {
                     :
                     null
             }
+
         </ListPage>
     )
 }

@@ -13,7 +13,6 @@ const GameInfo = (props) => {
 
     const [games, setGames] = useState([])
     const [comments, setComments] = useState([])
-
     
     useEffect(() => {
         async function  fetchData() {

@@ -14,7 +14,6 @@ import api from "../../api/api";
 const Feed = () => {
 
   const [posts, setPosts] = useState([]);
- 
 
   const getPosts = async () => {
     try {
