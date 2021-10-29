@@ -3,40 +3,62 @@ import { Link } from "react-router-dom";
 
 import api from "../../api/api";
 
-import GameCard from "./GamesCard";
+import GameCard from './GamesCard';
+import NavBar from '../Navbar/Navbar'
 
 import { Lobby, List } from "./styles";
 import { ImageLeft, ImageRight, PageComponent } from "../GamesInfo/styles";
 
+
 export const GameLobby = () => {
-  const [games, setGames] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const game = await api.getAllGames();
-      setGames([...game.data]);
-    }
+    const [games, setGames] = useState([])
 
-    fetchData();
-  }, []);
+    useEffect(() => {
+        async function fetchData(){
+        
+        const game = await api.getAllGames()
+            setGames([...game.data])
+ 
+        }
 
-  return (
-    <>
-      <PageComponent>
-        <ImageRight />
+        fetchData()
+    }, [])
 
-        <Lobby>
-          <List>
-            {games.map((game) => (
-              <GameCard key={game._id} {...game} />
-            ))}
-          </List>
-        </Lobby>
 
-        <ImageLeft />
-      </PageComponent>
-    </>
-  );
-};
+    return (
+        <>
+
+        <NavBar/>
+        <PageComponent>
+            
+            <ImageRight/>
+
+            <Lobby>
+                    {/* <input
+                        type='text'
+                        placeholder='Search a game...'
+                    /> */}
+                <List>
+
+                    {games.map(game => 
+                        <Link to={`/games/${game._id}`}>
+                            <GameCard {...game}/>
+                        </Link>
+                    )}
+
+                </List>
+            </Lobby>
+
+            <ImageLeft/>
+
+        </PageComponent>
+
+
+        </>
+    )
+
+}
 
 export default GameLobby;
+

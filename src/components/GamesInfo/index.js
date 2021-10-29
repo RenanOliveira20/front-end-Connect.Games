@@ -1,86 +1,101 @@
 import React, { useState, useEffect } from "react";
-// import { useParams } from 'react-roouter-dom';
 
 import api from '../../api/api';
 
-import { Article, Banner, PageComponent, ImageRight, Info, InputComment, LobbyComment, Section, Title, TitleSection, ImageLeft} from "./styles";
+import NavBar from '../Navbar/Navbar'
+import CommentsGames from './CardComment/ReviewCommentsGames'
+import CardComment from './CardComment/index'
 
-const GameInfo = () => {
+import { Article, Banner, PageComponent, ImageRight, Info, InfoPlat , InputComment, LobbyComment, Section, Title, TitleSection, ImageLeft, PInfo} from "./styles";
+
+const GameInfo = (props) => {
 
     const [games, setGames] = useState([])
+    const [comments, setComments] = useState([])
 
 
+
+    
     useEffect(() => {
         async function  fetchData() {
-            // const {id} = useParams()
-            // console.log(id)
-            const game = await api.getOneGame('3498')
+            
+            const gameDb = await api.get_Id(props.match.params._id)
+            const game = await api.getOneGame(gameDb.id)
+            
             setGames({...game})
+            setComments({...gameDb})
+
         }
         
         fetchData()
-          
-    }, [games])
+
+    }, [comments])
 
 
     return (
+    <>
+        {games.id?
+        <>
+            <NavBar/>
+            <PageComponent>
 
-    <PageComponent>
+                <ImageRight/>
 
-            <ImageRight/>
+                <Article>
+                    
+                    <Section>
 
-        <Article>
-                {/* {console.log(games)} */}
-            <Section>
+                        <Banner src={games.background_image} />
+                        <Title>{games.name}</Title>
+                        <div>
+                            <h2>{games.rating}</h2>
+                        </div>
 
-                <Banner src={games.background_image} />
-                <Title>{games.name}</Title>
-                
-            </Section>            
+                    </Section>            
 
-            <Section>
+                    <Section>
 
-                <TitleSection>Description:</TitleSection>
-                <Info>{games.description}</Info>
+                        <TitleSection>Description:</TitleSection>
+                        <Info>{games.description}</Info>
 
-            </Section>
+                    </Section>
 
-            <Section>
+                    <Section>
 
-                <TitleSection>Plataforms:</TitleSection>
+                        <TitleSection>Plataforms:</TitleSection>
 
-                <Info>
-                    {games.platforms && games.platforms.map( e => 
-                        e.platform && e.platform.name && <p>{e.platform.name}</p>
-                    )}                   
-                </Info>
+                        <InfoPlat>
+                            {games.platforms && games.platforms.map( e => 
+                                e.platform && e.platform.name && <PInfo key={e._id}>{e.platform.name}</PInfo>
+                            )}                   
+                        </InfoPlat>
 
+                    </Section>
 
-            </Section>
+                    <Section>
 
-            <Section>
+                        <TitleSection>Comments:</TitleSection>
 
-                <TitleSection>Comments:</TitleSection>
-                <InputComment></InputComment>
-                <LobbyComment></LobbyComment>
+                            <CommentsGames game={comments} idGame={comments._id}/>
+                              
+                        <LobbyComment>
+                                {comments.comments && comments.comments.map((e) => {
+                                    return <CardComment key={e._id} idGame={comments._id} Comment={e}/>
+                                })}
+                        </LobbyComment>
 
-            </Section>
+                    </Section>
 
-        </Article>
+                </Article>
 
-        <ImageLeft />
+                <ImageLeft />
 
-    </PageComponent>
-
+            </PageComponent>
+        </> : <h1> Loading... </h1>
+        }
+    </>
     )
-
-
 }
 
 
-export default GameInfo
-
-
-
-
-// 3498
+export default GameInfo;

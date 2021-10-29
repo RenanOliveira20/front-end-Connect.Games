@@ -4,7 +4,7 @@ class api {
         this.api = axios.create({
 
             baseURL: 'http://localhost:5000'
-            //baseURL: 'https://api-connect-games-2.herokuapp.com/'
+            // baseURL: 'https://api-connect-games-2.herokuapp.com/'
 
         })
 
@@ -26,6 +26,7 @@ class api {
             throw error
         })
         )
+
         this.apiOne = axios.create({
             baseURL: `https://api.rawg.io/api/games/`
         })
@@ -59,16 +60,27 @@ class api {
             return result
         } catch (error) {
             console.error(error.message)
+            throw error.response
+        }
+    }
+
+    get_Id = async (_id) => {
+        try {
+            const result = await this.api.get(`/games/${_id}`)
+            return result.data
+        } catch (error) {
+            console.error(error.message)
+            throw error.response
         }
     }
 
     getOneGame = async (id) => {
-
         try {
-            const result = await this.apiOne.get(`${id}?key=cbb5b86f21b641e194e2cf3dde368951`)
+            const result = await this.apiOne.get(`${id}?key=f2e297b35ae2447e9870c0c79c810359`)
             return result.data
         } catch (error) {
             console.error(error.message)
+            throw error.response
         }
     }
 
@@ -146,6 +158,24 @@ class api {
             await this.api.delete(`/post/${idPost}/${idComment}`)
         } catch (error) {
             console.log(error)
+            throw error.response
+        }
+
+
+    }
+
+    createCommentGame = async (idGame , payload ) => {
+        try {
+            await this.api.post(`/games/comment/${idGame}`, payload)
+        } catch (error) {
+            throw error.response
+        }
+    }
+
+    deleteCommentGame = async (idGame, idComment) =>{
+        try {
+            await this.api.delete(`/games/${idGame}/${idComment}`)
+        } catch (error) {
             throw error.response
         }
     }

@@ -1,4 +1,11 @@
 *{
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     text-align: center;
+
+}
+
+a{
+    text-decoration: none!important;
+    color: white!important;
 }

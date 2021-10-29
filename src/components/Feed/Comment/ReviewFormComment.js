@@ -10,7 +10,7 @@ const FormPost = (props) => {
 
   const createComment = async () => {
     try {
-      await api.createComment( idPost, { text: comment });
+      await api.createComment(idPost, { text: comment });
       setComment("");
       getPosts()
       onCancel()
@@ -20,7 +20,7 @@ const FormPost = (props) => {
   };
 
   const commentText = ({ target }) => {
-    setComment(target.value );
+    setComment(target.value);
   };
 
   return (
