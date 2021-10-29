@@ -27,27 +27,25 @@ const Feed = () => {
   }, []);
   return (
     <div>
-      <>
-        <NavBar />
+      <NavBar />
+      <PageComponent>
+        <ImageRight />
 
-        <PageComponent>
-          <ImageRight />
-
-          <Article>
-            <Section>
-              <FormPost getPosts={getPosts} />
-            </Section>
-
-            <Section>
-              {posts.map((e) => {
-                return <CardPost key={e._id} data={e} getPosts={getPosts} />;
-              })}
-            </Section>
-          </Article>
-
-          <ImageLeft />
-        </PageComponent>
-      </>
+        <Article>
+          <Section>
+            <FormPost getPosts={getPosts} />
+          </Section>
+          <Section>
+            <CarouselGame />
+          </Section>
+          <Section>
+            {posts.map((e) => {
+              return <CardPost key={e._id} data={e} getPosts={getPosts} />;
+            })}
+          </Section>
+        </Article>
+        <ImageLeft />
+      </PageComponent>
     </div>
   );
 };

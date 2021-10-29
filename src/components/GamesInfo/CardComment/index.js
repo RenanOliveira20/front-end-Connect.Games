@@ -21,16 +21,16 @@ const CardComment = (props) => {
     return (
         <Comment>
             <Card style={{ width: "70%" }}>
-                <ImgProfile>
+                {/* <ImgProfile>
                     {Comment.user.profilePicture ? (
                         <img src={Comment.user.profilePicture} alt={Comment.user.username} />
                     ) : (
                         <Profile />
                     )}
                 </ImgProfile>
-                <span className="p-3">{Comment.user.username}</span>
+                <span className="p-3">{Comment.user.username}</span> */}
                 <Card.Body>
-                    <Card.Text>{Comment.text}</Card.Text>
+                    {/* <Card.Text>{Comment.text}</Card.Text> */}
 
                     <Button variant="danger m-1" onClick={deleteCommentGame}>
                         <Trash />

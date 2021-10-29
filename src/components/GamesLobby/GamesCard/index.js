@@ -6,8 +6,8 @@ const GameCard = (props) => {
     return (
         <Card>
             <img src={`${props.background_image}`} alt={`${props.name}`}></img>
-            <Title>{props.name}</Title>
-            <SubTitle>Score: {props.rating}</SubTitle>
+            <Title className='aText'>{props.name}</Title>
+            <SubTitle className='aText'>Score: {props.rating}</SubTitle>
         </Card>
     )
 }
