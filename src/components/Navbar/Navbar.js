@@ -8,7 +8,7 @@ import {
   DivNavbar,
   ImgProfile,
 } from "./styles";
-import logo from "../../images/connectLogo.jpeg";
+import logo from "../../images/navbar-logo.png";
 import { Navbar, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import api from "../../api/api";

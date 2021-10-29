@@ -13,19 +13,21 @@ const App = () => {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/" component={Home} />
 
-        <Route path="/signup" component={SignUp} />
+        <Route exact path = '/' component ={Home} />
+        <Route path = '/signup' component = {SignUp}/>
+        <Route path = '/feed' component = {Feed}/>
+        <Route path = '/profile' component = {Profile}/>
 
         <Route exact path="/games" component={GameLobby} />
-
-        <Route path="/games/teste" component={GameInfo} />
-
-        <Route path="/feed" component={Feed} />
+          
+        <Route 
+          path='/games/:_id'
+          render={(props) => 
+          <GameInfo {...props}/>
+        }
+        />
         
-        <Route path="/profile" component={Profile} />
-
-        <Route path="/games" component={GameLobby} />
       </Switch>
     </div>
   );

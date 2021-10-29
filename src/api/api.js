@@ -26,6 +26,7 @@ class api {
             throw error
         })
         )
+
         this.apiOne = axios.create({
             baseURL: `https://api.rawg.io/api/games/`
         })
@@ -62,10 +63,18 @@ class api {
         }
     }
 
-    getOneGame = async (id) => {
-
+    get_Id = async (_id) => {
         try {
-            const result = await this.apiOne.get(`${id}?key=cbb5b86f21b641e194e2cf3dde368951`)
+            const result = await this.api.get(`/games/${_id}`)
+            return result.data
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
+
+    getOneGame = async (id) => {
+        try {
+            const result = await this.apiOne.get(`${id}?key=21e09e9887214441b5293a2ef6e8d144`)
             return result.data
         } catch (error) {
             console.error(error.message)
@@ -94,7 +103,14 @@ class api {
         throw error.response
       }
     };
-
+    getOnePost = async (id) => {
+        try {
+            const post = await this.api.get(`/post/${id}`);
+            return post.data
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
     getPost = async () => {
         try {
         const posts = await this.api.get('/feed')
@@ -149,6 +165,5 @@ class api {
             throw error.response
         }
     }
-    
 }
 export default new api();

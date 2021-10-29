@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import { CgProfile } from "react-icons/cg";
+
 export const Img = styled.img`
-  height: 100%;
-`;
+  height: 5vh;
+
+  @media screen and (max-width: 150px) {
+  }
+`
 
 export const Profile = styled(CgProfile)`
   color: #fff;
