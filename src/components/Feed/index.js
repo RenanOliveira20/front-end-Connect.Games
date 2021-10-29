@@ -1,79 +1,54 @@
 import { React, useState, useEffect } from "react";
 
-import { useHistory } from "react-router";
-
 import NavBar from "../Navbar/Navbar";
-import Posts from "../Profile/List/Post";
+import CardPost from "./Post/CardPost";
 import CarouselGame from "./CarouselGames/CarouselGame";
 import FormPost from "./Post/ReviewFormPost";
 
-import { ImageRight, ImageLeft, Article, Section } from '../GamesInfo/styles'
-import { PageComponent } from './styles'
+import { ImageRight, ImageLeft, Article, Section } from "../GamesInfo/styles";
+import { PageComponent } from "./styles";
 
 import api from "../../api/api";
 
 const Feed = () => {
-
   const [posts, setPosts] = useState([]);
-  const [user, setUser] = useState({})
+
   const getPosts = async () => {
     try {
       const postsFromDb = await api.getPost();
-      setPosts(postsFromDb)
+      setPosts(postsFromDb);
     } catch (error) {
       console.log(error);
     }
   };
-  const history = useHistory()
-  const validate = async (data) => {
-    if (!data) history.push('/');
-    return true
-}
+
   useEffect(() => {
-    getPosts(); 
+    getPosts();
   }, []);
-  useEffect(() => {
-    const fetchData = async () => {
-        const data = await api.getProfile();
-        if (validate(data)) {
-            setUser({ ...user, ...data })
-        }
-    }
-    fetchData()
-}, [user]);
   return (
-    <>
-    
-      <NavBar />
+    <div>
+      <>
+        <NavBar />
 
-      <PageComponent>
+        <PageComponent>
+          <ImageRight />
 
-        <ImageRight/>
+          <Article>
+            <Section>
+              <FormPost getPosts={getPosts} />
+            </Section>
 
-        <Article>
-        
-          <Section>
+            <Section>
+              {posts.map((e) => {
+                return <CardPost key={e._id} data={e} getPosts={getPosts} />;
+              })}
+            </Section>
+          </Article>
 
-            <FormPost getPosts= {getPosts} />
-
-          </Section>
-         <CarouselGame/>
-          <Section>
-
-          {posts.map((e) => {
-     return <Posts key={e._id} user={user} post={`${e._id}`}/>
-       })}
-
-          </Section> 
-        
-        </Article>        
-
-        <ImageLeft/>
-
-      </PageComponent>
-
-    </>
+          <ImageLeft />
+        </PageComponent>
+      </>
+    </div>
   );
 };
-
 export default Feed;

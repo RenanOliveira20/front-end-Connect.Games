@@ -2,8 +2,7 @@ import axios from 'axios';
 class api {
     constructor() {
         this.api = axios.create({
-
-            //baseURL: 'http://localhost:5000'
+            // baseURL: 'http://localhost:5000'
             baseURL: 'https://api-connect-games-2.herokuapp.com/'
 
         })
@@ -60,6 +59,7 @@ class api {
             return result
         } catch (error) {
             console.error(error.message)
+            throw error.response
         }
     }
 
@@ -69,15 +69,19 @@ class api {
             return result.data
         } catch (error) {
             console.error(error.message)
+            throw error.response
         }
     }
 
     getOneGame = async (id) => {
         try {
-            const result = await this.apiOne.get(`${id}?key=21e09e9887214441b5293a2ef6e8d144`)
+
+            const result = await this.apiOne.get(`${id}?key=f2e297b35ae2447e9870c0c79c810359`)
+
             return result.data
         } catch (error) {
             console.error(error.message)
+            throw error.response
         }
     }
 
@@ -162,6 +166,24 @@ class api {
             await this.api.delete(`/post/${idPost}/${idComment}`)
         } catch (error) {
             console.log(error)
+            throw error.response
+        }
+
+
+    }
+
+    createCommentGame = async (idGame , payload ) => {
+        try {
+            await this.api.post(`/games/comment/${idGame}`, payload)
+        } catch (error) {
+            throw error.response
+        }
+    }
+
+    deleteCommentGame = async (idGame, idComment) =>{
+        try {
+            await this.api.delete(`/games/${idGame}/${idComment}`)
+        } catch (error) {
             throw error.response
         }
     }
