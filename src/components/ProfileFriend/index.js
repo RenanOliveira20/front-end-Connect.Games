@@ -13,10 +13,15 @@ const ProfileFriend = (props) => {
     const [profile, setProfile] = useState();
     const user = async() =>{
         const result = await api.otherUser(props.match.params.id)
-        console.log(result)
+        setProfile(result)
         return result
     }
-    user()
+
+    useEffect(() => {
+        user()
+
+    }, [])
+    
     return (
         <div style={{ paddingBottom: '10%', height: 'vh100', backgroundColor: '#f2f2f2' }}>
             <Nav />

@@ -1,71 +1,57 @@
 import { React, useState, useEffect } from "react";
 
 import NavBar from "../Navbar/Navbar";
+import CardPost from "./Post/CardPost";
 import CarouselGame from "./CarouselGames/CarouselGame";
 import FormPost from "./Post/ReviewFormPost";
-import CardComment from "./Comment/CardComment";
+import Footer from '../Footer'
 
-
-import { ImageRight, ImageLeft, Article, Section } from '../GamesInfo/styles'
-import { PageComponent } from './styles'
+import { ImageRight, ImageLeft, Article, Section } from "../GamesInfo/styles";
+import { PageComponent } from "./styles";
 
 import api from "../../api/api";
 
 const Feed = () => {
-
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
     try {
       const postsFromDb = await api.getPost();
-      setPosts(postsFromDb)
+      setPosts(postsFromDb);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    getPosts(); 
+    getPosts();
   }, []);
 
-
   return (
- 
-    <>
-    
+    <div>
       <NavBar />
-
       <PageComponent>
-
-        <ImageRight/>
+        <ImageRight />
 
         <Article>
-        
           <Section>
-
-            <FormPost getPosts= {getPosts} />
-
+            <FormPost getPosts={getPosts} />
           </Section>
-
-            <CarouselGame />
-
           <Section>
-
+            <CarouselGame />
+          </Section>
+          <Section>
             {posts.map((e) => {
-              return <CardComment key={e._id} data={e} getPosts={getPosts}/>
+              return <CardPost key={e._id} data={e} getPosts={getPosts} />;
             })}
-
-
-          </Section> 
-        
-        </Article>        
-
-        <ImageLeft/>
-
+          </Section>
+        </Article>
+        <ImageLeft />
       </PageComponent>
+      
+      <Footer/>
 
-    </>
-
+    </div>
   );
 };
 
