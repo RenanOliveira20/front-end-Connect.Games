@@ -1,45 +1,47 @@
 import styled from "styled-components";
 
 export const ProfileCard = styled.div` 
-    width: 70%;
+    width: 50%;
     height: 40%;
-    background-color: white;
+    background-color: lightgrey;
     margin-top: 1%;
-    margin-left: 15%;
+    margin-left: 25%;
     border-bottom: 1px solid lightgrey;
-    box-shadow: 1px 1px 0 -1px black
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 `
 export const ImageContainer = styled.div`
     height: 80%;
-    width: 50%;
+    padding-left:1%;
+    padding-top: 1%;
+    width: 20%;
+    margin-bottom: 1%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center
+    align-items: center;
+    color: white;
+    
     img {
-        height: auto;
-        width: 50%;
-        margin-top: 5%;
-        margin-left: 5%;
-        border: 1px solid lightgrey;
+         height: 100px;
+        width: 100px;
         }
 
 `;
     export const FollowContainer = styled.div`
+        padding-top: 2%;
         width: 100%;
-        height: 80%;
+        height: 100%;
         display: flex;
-        justify-content: space-around ;
+        justify-content: space-between ;
         flex-direction:column;
-`;
+        `;
 export const UserConfig = styled.div`
     display: flex;
     justify-content: space-evenly ;
-    svg {
-        
-    }
+    margin-bottom: 3%;
+    
 `
 export const CountValues = styled.div`
+    
         display: flex;
         justify-content: space-evenly    ;
 `

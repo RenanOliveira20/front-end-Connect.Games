@@ -1,9 +1,10 @@
 import { React, useState, useEffect } from "react";
 
 import NavBar from "../Navbar/Navbar";
-import CardPost from "./Post/CardPost";
 import CarouselGame from "./CarouselGames/CarouselGame";
 import FormPost from "./Post/ReviewFormPost";
+import CardComment from "./Comment/CardComment";
+
 
 import { ImageRight, ImageLeft, Article, Section } from '../GamesInfo/styles'
 import { PageComponent } from './styles'
@@ -13,7 +14,8 @@ import api from "../../api/api";
 const Feed = () => {
 
   const [posts, setPosts] = useState([]);
-  
+ 
+
   const getPosts = async () => {
     try {
       const postsFromDb = await api.getPost();
@@ -22,10 +24,11 @@ const Feed = () => {
       console.log(error);
     }
   };
-  
+
   useEffect(() => {
     getPosts(); 
   }, []);
+
 
   return (
  
@@ -44,13 +47,15 @@ const Feed = () => {
             <FormPost getPosts= {getPosts} />
 
           </Section>
+
             <CarouselGame />
 
           <Section>
 
             {posts.map((e) => {
-              return <CardPost key={e._id} data={e} getPosts={getPosts}/>
+              return <CardComment key={e._id} data={e} getPosts={getPosts}/>
             })}
+
 
           </Section> 
         

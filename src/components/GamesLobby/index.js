@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import api from "../../api/api";
 
 import GameCard from './GamesCard';
@@ -28,7 +27,6 @@ export const GameLobby = () => {
 
     return (
         <>
-
         <NavBar/>
         <PageComponent>
             
@@ -47,6 +45,7 @@ export const GameLobby = () => {
                         </Link>
                     )}
 
+
                 </List>
             </Lobby>
 
@@ -61,4 +60,5 @@ export const GameLobby = () => {
 }
 
 export default GameLobby;
+
 
