@@ -14,6 +14,7 @@ import Footer from '../Footer'
 import { FollowContainer, ProfileCard, Container, UserConfig, CountValues, ImageContainer } from './styles';
 import { PageComponent, Section, Article, ImageRight, ImageLeft} from '../GamesInfo/styles';
 
+
 const Profile = () => {
     const [profile, setProfile] = useState();
     const history = useHistory();
@@ -26,9 +27,10 @@ const Profile = () => {
     useEffect(() => {
         const fetchData = async () => {
             const data = await api.getProfile();
-            if (validate(data)) {
-                setProfile({ ...profile, ...data })
-            }
+            
+                if (validate(data)) {
+                    setProfile({ ...profile, ...data })
+                }
         }
         fetchData()
     }, [profile]);

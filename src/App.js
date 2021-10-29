@@ -8,6 +8,7 @@ import Feed from "./components/Feed";
 import Profile from "./components/Profile";
 import GameLobby from "./components/GamesLobby";
 import GameInfo from "./components/GamesInfo";
+import ProfileFriend from "./components/ProfileFriend";
 
 const App = () => {
   return (
@@ -17,8 +18,8 @@ const App = () => {
         <Route exact path = '/' component ={Home} />
         <Route path = '/signup' component = {SignUp}/>
         <Route path = '/feed' component = {Feed}/>
-        <Route path = '/profile' component = {Profile}/>
-
+        <Route exact path = '/profile' component = {Profile}/>
+        <Route path = '/profile/:id' component = {ProfileFriend}/>
         <Route exact path="/games" component={GameLobby} />
           
         <Route 
