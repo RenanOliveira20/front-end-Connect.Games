@@ -13,10 +13,6 @@ const GameInfo = (props) => {
 
     const [games, setGames] = useState([])
     const [comments, setComments] = useState([])
-
-    const [games, setGames] = useState([])
-    const [comments, setComments] = useState([])
-
     
     useEffect(() => {
         async function  fetchData() {
@@ -77,12 +73,12 @@ const GameInfo = (props) => {
 
                         <TitleSection>Comments:</TitleSection>
 
-                            <CommentsGames game={comments} idGame={comments._id}/>
+                            {/* <CommentsGames game={comments} idGame={comments._id}/> */}
                               
                         <LobbyComment>
-                                {comments.comments && comments.comments.map((e) => {
+                                {/* {comments.comments && comments.comments.map((e) => {
                                     return <CardComment key={e._id} idGame={comments._id} Comment={e}/>
-                                })}
+                                })} */}
                         </LobbyComment>
 
                     </Section>

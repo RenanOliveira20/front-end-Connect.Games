@@ -2,10 +2,9 @@
     font-family: 'Poppins', sans-serif;
     margin: 0;
     text-align: center;
-
+    text-decoration: none!important;
 }
 
-a{
-    text-decoration: none!important;
+.aText{
     color: white!important;
 }

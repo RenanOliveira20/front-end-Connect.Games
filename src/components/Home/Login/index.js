@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
-import { Buttons, Layout, PageContainer, Section } from "./styles";
+
+import { Buttons, PageContainer, Section } from "./styles";
 
 const LoginForm = ({ login, handleValues, formValue, logo }) => {
   return (
@@ -9,11 +10,11 @@ const LoginForm = ({ login, handleValues, formValue, logo }) => {
     <PageContainer>
 
       <Section>
-        <img src={logo} alt="logo" className="mb-3 mt-5 pt-2"></img>
+        <img src={logo} alt="logo"/>
       </Section>
 
       <Section>
-        <Form onSubmit={login} className="">
+        <Form onSubmit={login}>
 
           <Form.Group className="mb-3  mt-5 pt-3" controlId="formBasicEmail">
             <Form.Label style={{ color: "white", fontSize: '4vh', fontWeight: 'bold', textShadow: '-1px 0 red, 0 1px red, 1px 0 red, 0 -1px red' }}>Email address</Form.Label>
@@ -33,8 +34,7 @@ const LoginForm = ({ login, handleValues, formValue, logo }) => {
                   name="password"
                   placeholder="Password"
                   onChange={handleValues}
-                  value={formValue.password}
-                  style={{width:'30vw'}}
+                  value={formValue.password}                
                 />
           </Form.Group>
 

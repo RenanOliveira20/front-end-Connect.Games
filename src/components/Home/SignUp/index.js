@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { Form, Button, FloatingLabel } from "react-bootstrap";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+
 import api from "../../../api/api";
-import { Background, MyButtons, MyForm } from "./styles";
+
+import logo from '../../../images/connectLogo.jpeg';
+
+import { Buttons, PageContainer, Section } from "../Login/styles";
 
 const defaultForm = {
   name: "",
@@ -31,12 +35,18 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="bg-black vh-100 vw-100">
-      <h1 className="pt-4" style={{ color: "red" }}>
-        Sign Up
-      </h1>
-      <MyForm>
-        <Form.Group className="mb-3 mt-5 " controlId="formBasicText">
+
+    <PageContainer>
+
+      <Section>
+        <img src={logo} alt="logo" className="mb-3 mt-5 pt-2" />
+        <h1 className="pt-4" style={{ color: "white", fontSize: '4vh', fontWeight: 'bold', textShadow: '-1px 0 red, 0 1px red, 1px 0 red, 0 -1px red' }}>
+          Sign Up
+        </h1>
+      </Section>
+
+      <Section style={{marginTop: '5vh'}}>
+        <Form.Group controlId="formBasicText" style={{ margin: '1vh' }}>
           <FloatingLabel
             controlId="floatingInput"
             label="Name"
@@ -48,12 +58,13 @@ const SignUp = () => {
               onChange={handleValues}
               value={formValue.name}
               style={{
-                textAlign: "left",
+              textAlign: "left",
               }}
             />
           </FloatingLabel>
         </Form.Group>
-        <Form.Group className="mb-3 mt-5 " controlId="formBasicText">
+
+        <Form.Group controlId="formBasicText" style={{ margin: '1vh' }}>
           <FloatingLabel
             controlId="floatingInput"
             label="Username"
@@ -70,7 +81,8 @@ const SignUp = () => {
             />
           </FloatingLabel>
         </Form.Group>
-        <Form.Group className="mb-3 mt-5 " controlId="formBasicEmail">
+
+        <Form.Group controlId="formBasicEmail" style={{ margin: '1vh' }}>
           <FloatingLabel
             controlId="floatingInput"
             label="Email"
@@ -82,12 +94,13 @@ const SignUp = () => {
               onChange={handleValues}
               value={formValue.email}
               style={{
-                textAlign: "left",
+                textAlign: "left"
               }}
             />
           </FloatingLabel>
         </Form.Group>
-        <Form.Group className="mb-3 mt-5 " controlId="formBasicPassword">
+
+        <Form.Group controlId="formBasicPassword" style={{ margin: '1vh' }}>
           <FloatingLabel
             controlId="floatingInput"
             label="Password"
@@ -104,35 +117,33 @@ const SignUp = () => {
             />
           </FloatingLabel>
         </Form.Group>
-      </MyForm>
-      <Background>
-        <MyButtons>
+
+
+        <Buttons>
           <Link
             to="/"
             style={{
               color: "white",
               textDecoration: "none",
             }}
-          >
-            <Button variant="danger " type="button" className="mt-5 p-2 ">
+            >
+            <Button variant="danger " type="button" className="p-3">
               Back to Login
             </Button>
           </Link>
+
           <Button
             variant="outline-danger "
             type="submit"
-            className="mt-5 p-2"
             onClick={createUser}
-            style={{
-              textDecoration: "none",
-              marginLeft: 50,
-            }}
-          >
+            className="p-3"         
+            >
             Create
           </Button>
-        </MyButtons>
-      </Background>
-    </div>
+        </Buttons>
+
+            </Section>
+    </PageContainer>
   );
 };
 

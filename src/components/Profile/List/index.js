@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
-import Posts from './Post'
-import { FavoriteIcon, FeedIcon, ListContainer } from './style'
+import React, { useState } from 'react';
+
+import Posts from './Post';
+
+import { FavoriteIcon, FeedIcon, ListContainer, ListPage } from './style';
 
 const List = ({user}) => {
     const [button, setButton] = useState({ feed: true, favorite: false })
@@ -22,8 +24,11 @@ const List = ({user}) => {
             setButton({ ...button, ...newValues })
         }
     }
+
+
     return (
-        <div>
+        <ListPage>
+
             <ListContainer>
                 {
                     button.feed ?
@@ -44,7 +49,8 @@ const List = ({user}) => {
                     :
                     null
             }
-        </div>
+
+        </ListPage>
     )
 }
 export default List

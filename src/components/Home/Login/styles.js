@@ -1,7 +1,5 @@
 import styled from "styled-components";
-
-import imgBack from '../../../images/preview.jpg'
-
+import imgBack from '../../../images/preview.jpg';
 
 export const PageContainer = styled.div`
 
@@ -19,28 +17,22 @@ export const PageContainer = styled.div`
 export const Section = styled.section`
     
     width: 50vw;
-    height: 35vh;
+    height: 40vh;
 
     margin: 2vh;
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-
-
-`
-
-
-export const Layout = styled.div ` 
-    width:90%;
-    margin-left: 5%;
-    background-color: black;
-
-    div{
-        width: 90%;
-        margin-left: 5%
+     
+    img{
+        margin-top: 2vh;
+        height: 25vh;
     }
+
 `
+
 export const Buttons = styled.div `
 
     width: 30vw;
