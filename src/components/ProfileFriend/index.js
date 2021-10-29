@@ -9,23 +9,14 @@ import { BsFillPencilFill } from 'react-icons/bs';
 import { GrConfigure } from 'react-icons/gr'
 import List from './List';
 
-const Profile = () => {
+const ProfileFriend = (props) => {
     const [profile, setProfile] = useState();
-    const history = useHistory()
-    const validate = async (data) => {
-        if (!data) history.push('/');
-        return true
+    const user = async() =>{
+        const result = await api.otherUser(props.match.params.id)
+        console.log(result)
+        return result
     }
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = await api.getProfile();
-            
-                if (validate(data)) {
-                    setProfile({ ...profile, ...data })
-                }
-        }
-        fetchData()
-    }, [profile]);
+    user()
     return (
         <div style={{ paddingBottom: '10%', height: 'vh100', backgroundColor: '#f2f2f2' }}>
             <Nav />
@@ -55,4 +46,4 @@ const Profile = () => {
     );
 }
 
-export default Profile;
+export default ProfileFriend;

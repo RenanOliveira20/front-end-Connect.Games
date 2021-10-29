@@ -92,6 +92,14 @@ class api {
             throw error.response
         }
     }
+    otherUser = async (_id) => {
+        try {
+            const result = await this.api.get(`/profile/user/${_id}`)
+            return result.data
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
     createPost = async ({text, image}) => {
         const uploadData = new FormData();
     uploadData.append('image', image)
