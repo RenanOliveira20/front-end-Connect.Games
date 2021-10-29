@@ -2,11 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 
+import Footer from '../../Footer/index'
+
 import { Buttons, PageContainer, Section } from "./styles";
 
 const LoginForm = ({ login, handleValues, formValue, logo }) => {
   return (
-
+    <>
     <PageContainer>
 
       <Section>
@@ -59,9 +61,13 @@ const LoginForm = ({ login, handleValues, formValue, logo }) => {
 
         </Buttons>
 
-      </Section>
 
+      </Section>
     </PageContainer>
+
+    <Footer/>
+    
+    </>
   );
 };
 

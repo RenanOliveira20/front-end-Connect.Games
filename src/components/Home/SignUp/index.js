@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import api from "../../../api/api";
 
 import logo from '../../../images/connectLogo.jpeg';
+import Footer from "../../Footer";
 
 import { Buttons, PageContainer, Section } from "../Login/styles";
 
@@ -35,7 +36,7 @@ const SignUp = () => {
     }
   };
   return (
-
+    <>
     <PageContainer>
 
       <Section>
@@ -142,8 +143,12 @@ const SignUp = () => {
           </Button>
         </Buttons>
 
-            </Section>
+      </Section>
+
+
     </PageContainer>
+    <Footer/>
+    </>
   );
 };
 

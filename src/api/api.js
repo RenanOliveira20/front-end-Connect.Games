@@ -98,14 +98,14 @@ class api {
     }
     createPost = async ({text, image}) => {
         const uploadData = new FormData();
-    uploadData.append('image', image)
-    uploadData.append('text', text)
-      try {
-        await this.api.post("/feed", uploadData);
-      } catch (error) {
-        console.log(error); 
-        throw error.response
-      }
+        uploadData.append('image', image)
+        uploadData.append('text', text)
+        try {
+            await this.api.post("/feed", uploadData);
+        } catch (error) {
+            console.log(error); 
+            throw error.response
+        }
     };
     getOnePost = async (id) => {
         try {
@@ -113,6 +113,7 @@ class api {
             return post.data
         } catch (error) {
             console.error(error.message)
+            throw error.response
         }
     }
     getPost = async () => {
@@ -150,9 +151,9 @@ class api {
           console.log(error);
           throw error.response
         }
-      };
+    };
 
-      putReactionsComment = async (idComment, payload) => {
+    putReactionsComment = async (idComment, payload) => {
         try {
             await this.api.put(`/post/${idComment}/reactionsComment`, payload)
         } catch (error) {
@@ -161,15 +162,13 @@ class api {
         }
     };
 
-      deleteComment = async (idPost, idComment) => {
+    deleteComment = async (idPost, idComment) => {
         try {
             await this.api.delete(`/post/${idPost}/${idComment}`)
         } catch (error) {
             console.log(error)
             throw error.response
         }
-
-
     }
 
     createCommentGame = async (idGame , payload ) => {
@@ -187,5 +186,24 @@ class api {
             throw error.response
         }
     }
+
+    putGameUserFavorite = async (idGame, payload) => {
+        try {
+            await this.api.put(`/games/favorites/${idGame}`, payload)
+        } catch (error) {
+            console.log(error)
+            throw error.response
+        }
+    };
+
+    putUserGameFavorite = async (idGame, payload) => {
+        try {
+            await this.api.put(`/profile/${idGame}/favorite`, payload)
+        } catch (error) {
+            console.log(error)
+            throw error.response
+        }
+    }
+
 }
 export default new api();
