@@ -52,6 +52,7 @@ const CardPost = (props) => {
   return (
     <Post>
       <Card style={{ width: "50%", height: "50%" }}>
+      <div>
       <ImgProfile>
               {post.user.profilePicture ? (
                 <img src={post.user.profilePicture} alt={post.user.username} />
@@ -60,6 +61,7 @@ const CardPost = (props) => {
               )}
             </ImgProfile>
       <span className= "p-3">{post.user.username}</span>
+      </div>
           <Card.Text>{post.text}</Card.Text>
         {post.imageUrl ? <Card.Img variant="top" src={post.imageUrl} /> : null}
         <Card.Body>
