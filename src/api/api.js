@@ -2,9 +2,8 @@ import axios from 'axios';
 class api {
     constructor() {
         this.api = axios.create({
-
-            baseURL: 'http://localhost:5000'
-            // baseURL: 'https://api-connect-games-2.herokuapp.com/'
+            // baseURL: 'http://localhost:5000'
+            baseURL: 'https://api-connect-games-2.herokuapp.com/'
 
         })
 
@@ -76,7 +75,9 @@ class api {
 
     getOneGame = async (id) => {
         try {
+
             const result = await this.apiOne.get(`${id}?key=f2e297b35ae2447e9870c0c79c810359`)
+
             return result.data
         } catch (error) {
             console.error(error.message)
@@ -106,7 +107,14 @@ class api {
         throw error.response
       }
     };
-
+    getOnePost = async (id) => {
+        try {
+            const post = await this.api.get(`/post/${id}`);
+            return post.data
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
     getPost = async () => {
         try {
         const posts = await this.api.get('/feed')
@@ -179,6 +187,5 @@ class api {
             throw error.response
         }
     }
-    
 }
 export default new api();
