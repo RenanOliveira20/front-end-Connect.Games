@@ -47,6 +47,9 @@ const NavBar = () => {
           <Link to="/games">
             <Button variant="outline-danger">Games</Button>
           </Link>
+          <Link to="/users">
+            <Button variant="outline-danger">Users</Button>
+          </Link>
         </DivButtons>
         <DivProfile>
           <Link to="/profile">

@@ -10,6 +10,10 @@ import GameLobby from "./components/GamesLobby";
 import GameInfo from "./components/GamesInfo";
 import ProfileFriend from "./components/ProfileFriend";
 
+import UsersLobby from "./components/Users";
+import PostDetail from "./components/PostDetail/index";
+
+
 const App = () => {
   return (
     <div className="App">
@@ -21,12 +25,17 @@ const App = () => {
         <Route exact path = '/profile' component = {Profile}/>
         <Route path = '/profile/:id' component = {ProfileFriend}/>
         <Route exact path="/games" component={GameLobby} />
-          
+        <Route exact path ="/post/:id/:user" component ={PostDetail}/>
         <Route 
           path='/games/:_id'
           render={(props) => 
           <GameInfo {...props}/>
         }
+        />
+
+        <Route
+          path='/users'
+          component={UsersLobby}
         />
         
       </Switch>
