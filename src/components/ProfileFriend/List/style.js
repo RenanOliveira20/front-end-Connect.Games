@@ -20,6 +20,10 @@ export const ListContainer = styled.div`
             background-color:  #F0F8FF
         }
     }
+    @media screen and (max-width: 400px){
+        width:100%;
+    margin-left: 0
+    }
 `
 export const FeedIcon =styled(CgFormatJustify)`
 color: #dc3545;

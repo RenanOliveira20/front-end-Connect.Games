@@ -16,7 +16,7 @@ const GameInfo = (props) => {
 
     const [games, setGames] = useState([])
     const [comments, setComments] = useState([])
-    const [users, setUser] = useState([])
+
     
     const userId = localStorage.getItem('userId')
 

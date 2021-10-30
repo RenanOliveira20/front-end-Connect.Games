@@ -31,23 +31,24 @@ const List = ({user}) => {
 
             <ListContainer>
                 {
-                    button.feed ?
+                    button && button.feed ?
                         <button name='one' style={{ borderBottom: '1px solid red' }} onClick={handleValues}><FeedIcon /> Posts</button> :
                         <button name='one' onClick={handleValues}><FeedIcon /> Posts</button>
                 }
                 {
-                    button.favorite ?
+                    button && button.favorite ?
                         <button name='two' style={{ borderBottom: '1px solid red' }} onClick={handleValues}><FavoriteIcon /> Favorite Games </button> :
                         <button name='two' onClick={handleValues}><FavoriteIcon /> Favorite Games </button>
                 }
             </ListContainer>
             
             {
-            button.feed ?
-                user && user.posts.map((e, i)=>{
-                    return <Posts key={i} post = {e} user = {user}/>
-                })
-                : null
+                button &&  button.feed ?
+                    user && user.posts.map((e, i)=>{
+                        return <Posts key={i} post = {e} user = {user}/>
+                    })
+                    :
+                    null
             }
 
         </ListPage>
