@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react'
 import api from '../../../../api/api'
 import { BodyImage, ContainerPost, HeaderImage, PostBody, PostHeader, PostOptions, ProfileName, Reactions } from './style'
 import { ImMenu3, ImMenu4 } from 'react-icons/im'
-import { AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike, AiOutlineSend } from 'react-icons/ai'
+import { AiOutlineLike, AiOutlineDislike,  AiOutlineSend } from 'react-icons/ai'
 import { FaRegComment } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+
 const Posts = ({ post, user }) => {
     const [myPost, setPost] = useState({})
     const [myForm, setForm] = useState({ form: false, comment: false })
@@ -46,7 +47,27 @@ const Posts = ({ post, user }) => {
             console.log(error);
         }
     };
-
+    const deletePost = async () => {
+        try {
+          await api.deletePost(post);
+          data();
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    
+      const reactionLike = async () => {
+        try {
+          if( post.likes.indexOf(user) !==  -1 ) {
+            await api.putReactionsPost(post, {like: false})  
+          } else {
+            await api.putReactionsPost(post, {like: true})
+          }
+        } catch (error) {
+          console.log(error)
+        } finally {
+          data()
+        }
 
 
     return (
@@ -60,8 +81,7 @@ const Posts = ({ post, user }) => {
                     {myForm.form ? <>
                         <ImMenu4 style={{ color: '#dc3545' }} />
                         <ul>
-                            <li> <span>Edit</span></li>
-                            <li><span>Delete</span> </li>
+                            <li><span >Delete</span> </li>
                         </ul>
                     </>
                         :
@@ -101,12 +121,11 @@ const Posts = ({ post, user }) => {
                     </li>
                     <li onClick={handleComment}>
                         <FaRegComment />
-                        <Link to={`/post/${post}/:${user._id}`}>
                             <p style={{ fontSize: '13px' }}>{myPost && myPost.comments && myPost.comments.length} comments</p>
-                        </Link>
+                       
                     </li>
                 </Reactions>}
         </ContainerPost>
     )
-}
-export default Posts
+}}
+export default  Posts
