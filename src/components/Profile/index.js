@@ -12,7 +12,6 @@ import Follow from './Follow';
 import Footer from '../Footer'
 
 import { FollowContainer, ProfileCard, Container, UserConfig, CountValues, ImageContainer } from './styles';
-import { PageComponent, Section, Article, ImageRight, ImageLeft} from '../GamesInfo/styles';
 
 
 const Profile = () => {
@@ -39,13 +38,7 @@ const Profile = () => {
 
     <>
         <Nav />
-        <PageComponent>
-
-            <ImageRight/>
-
-            <Article>
-
-                <Section>
+                    <ProfileCard>
                     <Container>
 
                         <ImageContainer>
@@ -67,19 +60,10 @@ const Profile = () => {
                             </CountValues>
                         </FollowContainer>
 
-                    </Container>
-                </Section>
-
-                <Section>
+                        </Container>
+                    </ProfileCard>
                     <List user ={profile}/>
-                </Section>
-
-            </Article>
-
-            <ImageLeft/>
-
-        </PageComponent>
-        <Footer/>
+                <Footer/>
     </>
     );
 }
