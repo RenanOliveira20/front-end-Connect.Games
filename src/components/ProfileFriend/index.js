@@ -9,58 +9,37 @@ import List from './List';
 import { CgProfile } from "react-icons/cg";
 
 const ProfileFriend = (props) => {
-    const [profile, setProfile] = useState();
+    const [profile, setProfile] = useState({});
     const [logedUser, setLogedUser] = useState({});
-    const [followThis, setFollow] = useState({
-    })
+    const [followThis, setFollow] = useState()
     const user = async () => {
         const result = await api.otherUser(props.match.params.id)
         setProfile({ ...profile, ...result[0] })
     }
-
+    let have = false
     const updateLogedUser = async () => {
         const result = await api.getProfile();
-        setLogedUser({ ...logedUser, ...result });
-        return true
-    }
-    const followFriend = async () => {
-        if(logedUser){
-            const auth = logedUser.following && logedUser.following.filter((e)=>{
-                return e === props.match.params.id
-            })
-            if(auth){
-                setFollow({
-                    follow : true
-                })
-            }
-            if(!auth){
-                setFollow({
-                    follow : false
-                })
-            }
+       setLogedUser({ ...logedUser, ...result });
+           result.following.filter((e)=> e === props.match.params.id ? have = true : have = false)
+           setFollow(have)
         }
-    }
     useEffect(() => {
         user();
         updateLogedUser();
-        followFriend();
     }, [])
-    setInterval(() => {
-        user()
-    }, 60000);
+
+
     const follow = async () => {
         try {
             const action = {
                 follow: true,
                 id: props.match.params.id
             }
-            await api.followUser({ ...action });
+            const switched = await api.followUser({ ...action });
             user();
             updateLogedUser();
-                const action2 = {
-                    follow: true
-                }
-                setFollow({...action2})
+            if (switched) {
+            }
         } catch (error) {
             console.log(error)
         }
@@ -72,14 +51,10 @@ const ProfileFriend = (props) => {
                 unfollow: true,
                 id: props.match.params.id
             }
-            await api.followUser({ ...action });
+            const switched = await api.followUser({ ...action });
             user();
-            const vai = updateLogedUser();
-            if(vai){
-                const action2 = {
-                    follow : false
-                }
-                setFollow({...action2})
+            updateLogedUser();
+            if (switched) {
             }
         } catch (error) {
             console.log(error)
@@ -87,18 +62,18 @@ const ProfileFriend = (props) => {
     }
     return (
 
-        <div style={{ paddingBottom: '10%', height: 'vh100', backgroundColor: '#f2f2f2' }}>
+        <div style={{ paddingBottom: '10%', height: 'vh100', backgroundColor: '#f2f2f2' }} >
             <Nav />
             <ProfileCard>
                 <Container>
                     <ImageContainer>
-                        {profile && profile.profilePicture ? <Image roundedCircle src={profile.profilePicture} alt='image profile' /> : < CgProfile style={{ fontSize: '50px', color: 'white' }} />}
-                        <p style={{ fontSize: '30px' }}><b>{profile && profile.name}</b></p>
+                        {profile && profile.profilePicture ? <img  src={profile.profilePicture} alt='image profile' /> : < CgProfile style={{ fontSize: '50px', color: 'white' }} />}
+                        <p ><b>{profile && profile.name}</b></p>
                     </ImageContainer>
                     <FollowContainer>
                         <UserConfig>
                             <p><b>{profile && profile.username}</b></p>
-                            {followThis && followThis.follow && followThis.follow ?  <Button variant='danger' onClick={unfollow}>Unfollow</Button>: <Button variant='danger' onClick={follow}>Follow</Button>
+                            {followThis ? <Button variant='danger' onClick={unfollow}>Unfollow</Button> : <Button variant='danger' onClick={follow}>Follow</Button>
                             }
                         </UserConfig>
                         <CountValues>
@@ -110,8 +85,8 @@ const ProfileFriend = (props) => {
                     </FollowContainer>
                 </Container>
             </ProfileCard>
-            {/* <List user={profile} />  */}
-        </div>
+            {/* <List user={profile} /> */}
+        </div >
     );
 }
 
