@@ -2,7 +2,7 @@
 
 (Project Module 3 Ironhack)
 
- ![Start Screen](./src/images/logo.png)
+ ![Start Screen](./src/images/connectLogo.jpeg)
 
  Demo [HERE]('') **IROBEERS**
 
@@ -29,4 +29,4 @@ Thank you very much for this first module 🤓.
 ---
 **Developer:** ⌨️ with ❤️ by [Jhonatan Veras](https://github.com/jhonatanveras) 😊
 **Developer:** ⌨️ with ❤️ by [Renan Oliveira](https://github.com/RenanOliveira20) 😊
-**Developer:** ⌨️ with ❤️ by [Renan Oliveira](https://github.com/lua-nadai) 😊
+**Developer:** ⌨️ with ❤️ by [Luana Nadai](https://github.com/lua-nadai) 😊
