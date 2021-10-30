@@ -1,9 +1,9 @@
 import React from "react";
 import api from "../../../api/api";
 
-import { Card, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
-import { Trash, Like, Dislike, Comments, ImgProfile, PostUserContainer, UserPost, PostDiv, TextDiv } from '../Post/styles'
+import { Trash, Like, Dislike, ImgProfile, PostUserContainer, UserPost, PostDiv, TextDiv } from '../Post/styles'
 import { PostContainer, PostSection } from './styles'
 
 const CardComment = ({ data: comment, post, getPosts }) => {

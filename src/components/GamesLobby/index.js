@@ -4,26 +4,42 @@ import api from "../../api/api";
 
 import GameCard from './GamesCard';
 import NavBar from '../Navbar/Navbar';
-import Footer from '../Footer'
+import Footer from '../Footer';
+import SearchBar from "../Users/SearchBar";
 
-import { Lobby, List } from "./styles";
-import { ImageLeft, ImageRight, PageComponent } from "../GamesInfo/styles";
+import {  List } from "./styles";
+import { ImageLeft, ImageRight, PageComponent, Section, Article } from "../GamesInfo/styles";
 
 
 const GameLobby = () => {
 
     const [games, setGames] = useState([])
+    const [search, setSearch] = useState([])
+
+    const gamesDb = async () => {
+        const result = await api.getAllGames()
+        setGames([...result])
+    }
 
     useEffect(() => {
-        async function fetchData(){
-        
-        const game = await api.getAllGames()
-            setGames([...game.data])
- 
-        }
-
-        fetchData()
+        gamesDb()
     }, [])
+
+    const userFilter = async (inputSearch) => {
+        try {
+
+            if (inputSearch === '') {
+                gamesDb();
+            } else {
+                const filtered = games.filter((user) => {
+                    return user.name.toLowerCase().includes(inputSearch.toLowerCase())
+                })
+                setGames([...filtered])
+            }
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
 
     return (
@@ -33,11 +49,12 @@ const GameLobby = () => {
                 
                 <ImageRight/>
 
-                <Lobby>
-                        {/* <input
-                            type='text'
-                            placeholder='Search a game...'
-                        /> */}
+                <Article>
+                    
+                    <Section>
+                        <SearchBar userFilter={userFilter}/>
+                
+                    </Section>
                     <List>
 
                         {games.map(game => 
@@ -48,7 +65,7 @@ const GameLobby = () => {
 
 
                     </List>
-                </Lobby>
+                </Article>
 
                 <ImageLeft/>
 

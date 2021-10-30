@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import { InputPost } from './styles'
+
 class SearchBar extends Component {
     state = {
         input: ''
@@ -16,8 +18,8 @@ class SearchBar extends Component {
     render(){
         return (
         <>
-            <div>
-                <input
+            <div style={{ height:'10vh', display:'flex', alignItems:'center'}}>
+                <InputPost
                     type='text'
                     placeholder='Search...'
                     onChange={this.handleSearch}

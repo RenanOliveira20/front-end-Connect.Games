@@ -47,8 +47,6 @@ const List = ({user}, props) => {
 
                 
 
-
-
         </>
     )
 }

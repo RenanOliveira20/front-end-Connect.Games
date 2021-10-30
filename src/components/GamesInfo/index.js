@@ -8,7 +8,7 @@ import Footer from '../Footer';
 import CommentsGames from './CardComment/ReviewCommentsGames';
 import CardComment from './CardComment/index';
 
-import { Article, Banner, PageComponent, ImageRight, Info, InfoPlat, InputComment, LobbyComment, Section, Title, TitleSection, ImageLeft, PInfo, ButtonFavorite, ButtonUnFavorite, TitleContainer} from "./styles";
+import { Article, Banner, PageComponent, ImageRight, Info, InfoPlat, Section, Title, TitleSection, ImageLeft, PInfo, ButtonFavorite, ButtonUnFavorite, TitleContainer} from "./styles";
 
 
 
