@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router";
 import api from "../../../api/api"
 import { Carousel } from "react-bootstrap";
 import GamesCard from "../../GamesLobby/GamesCard";

@@ -93,8 +93,8 @@ export const Profile = styled(CgProfile)`
 `;
 
 export const ImgProfile = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   overflow: hidden;
   border-radius: 50%;
   align-items: center;
