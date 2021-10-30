@@ -27,12 +27,13 @@ const FormPost = (props) => {
     <DivFormComments>
       <Form style={{ width: "50%" }}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Comment</Form.Label>
           <Form.Control
             as="textarea"
             rows={3}
             value={comment}
+            placeholder='Comment something here...'
             onChange={commentText}
+            style={{marginTop:'2vh'}}
           />
         </Form.Group>
         <Button variant="outline-danger m-2" onClick={onCancel}>

@@ -88,7 +88,7 @@ export const ImgProfile = styled.div`
   background: radial-gradient(circle, rgba(52,52,52,1) 82%, rgba(52,52,52,0) 100%);
 
   width:15vw;
-  height: 15vh;
+  height: 100%;
   
   display: flex;
   flex-direction: column;
@@ -119,10 +119,16 @@ export const InputPost = styled.input`
   border-width:0.5px;
   border-color: red;
 
+  
+
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 
+  :focus {
+    outline: none !important;
+    box-shadow: 0 0 10px #e40a0a;
+  }
 `
 
 export const PostContainer = styled.div`
@@ -154,21 +160,22 @@ export const PostUserContainer = styled.div`
 
   background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(71,29,29,1) 20%, rgba(71,29,29,1) 97%, rgba(255,255,255,0) 100%);
   width: 40vw;
-  height: 15vh; 
 
   display: flex;
+  align-items: center;
   
 `
 
 export const UserPost = styled.p`
   
-  width: 30vw;
+  width: 35vw;
+
+  padding:1vh;
 
   color:white;
 
   display: inline-block;
   word-wrap: break-word;
-  overflow: hidden;
   
   img{
     width:50%;
@@ -181,6 +188,7 @@ export const TextDiv = styled.div`
   display:flex;
   flex-direction:column;
   justify-content:center;
+  min-height:15vh;
 
 `
 export const PostDiv = styled.div`

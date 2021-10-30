@@ -48,8 +48,8 @@ export const DivNavbar = styled.div`
 `;
 
 export const ImgProfile = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   overflow: hidden;
   border-radius: 50%;
   align-items: center;

@@ -106,13 +106,11 @@ const GameInfo = (props) => {
 
                         <TitleSection>Comments:</TitleSection>
 
-                            {/* <CommentsGames game={comments} idGame={comments._id}/> */}
-                              
-                        <LobbyComment>
-                                {/* {comments.comments && comments.comments.map((e) => {
-                                    return <CardComment key={e._id} idGame={comments._id} Comment={e}/>
-                                })} */}
-                        </LobbyComment>
+                        <CommentsGames game={comments} idGame={comments._id} updateGame={updateGame}/>
+                                                     
+                        {comments.comments && comments.comments.map((e) => {
+                            return <CardComment key={e._id} data={e} updateGame={updateGame} game={comments}/>
+                        })}                      
 
                     </Section>
 
