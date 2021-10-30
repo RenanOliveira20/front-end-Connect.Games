@@ -35,7 +35,8 @@ const App = () => {
           path='/users'
           component={UsersLobby}
         />
-  </Switch>
+        
+      </Switch>
     </div>
   );
 };

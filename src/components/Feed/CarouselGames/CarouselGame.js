@@ -10,7 +10,7 @@ const CarouselGame = () => {
   useEffect(() => {
     async function fetchData() {
       const game = await api.getAllGames();
-      setGames([...game.data]);
+      setGames([...game]);
     }
 
     fetchData();

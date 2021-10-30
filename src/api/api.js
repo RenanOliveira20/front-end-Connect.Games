@@ -2,8 +2,8 @@ import axios from 'axios';
 class api {
     constructor() {
         this.api = axios.create({
-            //baseURL: 'http://localhost:5000'
-            baseURL: 'https://api-connect-games-2.herokuapp.com/'
+            baseURL: 'http://localhost:5000'
+            // baseURL: 'https://api-connect-games-2.herokuapp.com/'
 
         })
 
@@ -54,7 +54,7 @@ class api {
     getAllGames = async () => {
         try {
             const result = await this.api.get('/games/all')
-            return result
+            return result.data
         } catch (error) {
             console.error(error.message)
             throw error.response

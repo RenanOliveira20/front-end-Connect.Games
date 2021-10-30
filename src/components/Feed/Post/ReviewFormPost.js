@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import api from "../../../api/api";
-import { Form, Button } from "react-bootstrap";
-import { ImageAdd, DivFormPost, InputPost, PostContainer, ButtonsPost } from "./styles";
+import { Button } from "react-bootstrap";
+import { ImageAdd, InputPost, PostContainer, ButtonsPost } from "./styles";
 
 const FormPost = (props) => {
 
