@@ -11,7 +11,6 @@ export const ListContainer = styled.div`
     border-bottom: 1px solid lightgrey; 
     display: flex;
     justify-content: space-around;
-
     button{
         background-color: lightgrey;
         border: none;
@@ -21,21 +20,18 @@ export const ListContainer = styled.div`
             background-color:  #F0F8FF
         }
     }
+    @media screen and (max-width: 400px){
+        width:100%;
+        margin-left: 0
+    }
 `
 export const FeedIcon =styled(CgFormatJustify)`
-
-    color: #dc3545;
-    height: 80%;
-    font-size: 2rem;
+color: #dc3545;
+height: 80%;
+font-size: 2rem;
 `
 export const FavoriteIcon =styled(BsBookmarkStarFill)`
-    color: #dc3545;
-    height: 80%;
-    font-size: 2rem;
-`
-
-export const ListPage = styled.div`
-
-    width: 70vw;
-
+color: #dc3545;
+height: 80%;
+font-size: 2rem
 `
