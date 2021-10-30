@@ -2,8 +2,8 @@ import axios from 'axios';
 class api {
     constructor() {
         this.api = axios.create({
-            baseURL: 'http://localhost:5000'
-            // baseURL: 'https://api-connect-games-2.herokuapp.com/'
+            //baseURL: 'http://localhost:5000'
+            baseURL: 'https://api-connect-games-2.herokuapp.com/'
 
         })
 
@@ -84,7 +84,7 @@ class api {
             throw error.response
         }
     }
-
+    //profile routes
     getProfile = async () => {
         try {
             const profile = await this.api.get('/profile',{headers:{
@@ -104,6 +104,17 @@ class api {
             console.error(error.message)
         }
     }
+    followUser = async (payload) => {
+        console.log('aqui')
+        try {
+            await this.api.put('/profile', payload);
+            return true
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
+
+
     createPost = async ({text, image}) => {
         const uploadData = new FormData();
         uploadData.append('image', image)

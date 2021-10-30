@@ -24,16 +24,16 @@ const Profile = () => {
         return true
     }
 
+    const fetchData = async () => {
+        const data = await api.getProfile();
+        
+            if (validate(data)) {
+                setProfile({ ...profile, ...data })
+            }
+    }
     useEffect(() => {
-        const fetchData = async () => {
-            const data = await api.getProfile();
-            
-                if (validate(data)) {
-                    setProfile({ ...profile, ...data })
-                }
-        }
         fetchData()
-    }, [profile]);
+    }, []);
 
     return (
 

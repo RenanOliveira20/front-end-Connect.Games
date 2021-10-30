@@ -9,15 +9,15 @@ const Posts = ({ post, user }) => {
     const [myPost, setPost] = useState({})
     const [myForm, setForm] = useState({ form: false, comment: false })
     const [comment, setComment] = useState({ text: '' })
+    const data = async () => {
+        const myData = await api.getOnePost(post)
+        if (myData) {
+            setPost({ ...myPost, ...myData })
+        }
+    };
     useEffect(() => {
-        const data = async () => {
-            const myData = await api.getOnePost(post)
-            if (myData) {
-                setPost({ ...myPost, ...myData })
-            }
-        };
         data()
-    }, [myPost])
+    }, [])
     const handleForm = () => {
         const newForm = {
             form: !myForm.form
