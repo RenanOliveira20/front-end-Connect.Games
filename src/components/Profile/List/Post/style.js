@@ -4,7 +4,7 @@ export const ContainerPost = styled.div`
     width: 50%;
     margin-top: 1%;
     margin-bottom: 1%;
-    margin-left: 25%;
+
     background-color: lightgrey;
     border: 1px solid black; 
     @media screen and (max-width: 400px){

@@ -5,7 +5,7 @@ import Posts from './Post';
 import { FavoriteIcon, FeedIcon, ListContainer, ListPage } from './style';
 
 
-const List = ({ user, fetchData}) => {
+const List = ({ user, fetchData }) => {
     const [button, setButton] = useState({ feed: true, favorite: false })
     const handleValues = ({ target: { name } }) => {
         const newValues = {
@@ -26,9 +26,9 @@ const List = ({ user, fetchData}) => {
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchData()
-    },[])
+    }, [])
 
 
     return (
@@ -36,7 +36,7 @@ const List = ({ user, fetchData}) => {
 
             <ListContainer>
                 {
-                    button && button.feed  ?
+                    button && button.feed ?
                         <button name='one' style={{ borderBottom: '1px solid red' }} onClick={handleValues}><FeedIcon /> Posts</button> :
                         <button name='one' onClick={handleValues}><FeedIcon /> Posts</button>
                 }
@@ -47,13 +47,13 @@ const List = ({ user, fetchData}) => {
                 }
             </ListContainer>
 
-                {button &&  button.feed ?
-                    user && user.posts.map((e, i)=>{
-                        return <Posts key={i} post = {e} user = {user}/>
-                    })
-                    :
-                    null
-                }
+            {button && button.feed ?
+                user && user.posts.map((e, i) => {
+                    return <Posts key={i} post={e} user={user} />
+                })
+                :
+                null
+            }
 
         </>
     )
