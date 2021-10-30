@@ -13,10 +13,6 @@ import ProfileFriend from "./components/ProfileFriend";
 import PostDetail from "./components/PostDetail/index";
 
 
-import UsersLobby from "./components/Users";
-import PostDetail from "./components/PostDetail/index";
-
-
 const App = () => {
   return (
     <div className="App">
