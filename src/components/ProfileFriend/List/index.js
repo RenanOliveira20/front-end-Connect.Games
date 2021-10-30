@@ -26,7 +26,7 @@ const List = ({user}) => {
         <div>
             <ListContainer>
                 {
-                    button.feed ?
+                    button && button.feed ?
                         <button name='one' style={{ borderBottom: '1px solid red' }} onClick={handleValues}><FeedIcon /> Posts</button> :
                         <button name='one' onClick={handleValues}><FeedIcon /> Posts</button>
                 }
