@@ -18,6 +18,9 @@ export const Profile = styled(CgProfile)`
 `;
 
 export const DivButtons = styled.div`
+  width: 10vw;
+  display:flex;
+  justify-content:space-evenly;
   align-items: center;
   @media screen and (max-width: 768px) {
   }

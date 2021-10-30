@@ -9,6 +9,7 @@ import Profile from "./components/Profile";
 import GameLobby from "./components/GamesLobby";
 import GameInfo from "./components/GamesInfo";
 import ProfileFriend from "./components/ProfileFriend";
+import UsersLobby from "./components/Users";
 
 const App = () => {
   return (
@@ -27,6 +28,11 @@ const App = () => {
           render={(props) => 
           <GameInfo {...props}/>
         }
+        />
+
+        <Route
+          path='/users'
+          component={UsersLobby}
         />
         
       </Switch>
