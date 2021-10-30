@@ -29,10 +29,27 @@ const Posts = ({ post, user }) => {
             comment: !myForm.comment
         }
         setForm({ ...myForm, comment: newForm.comment })
+        setComment({ ...comment, text: '' });
     }
     const handleText = ({ target: { value } }) => {
-        setComment({ ...comment, text: value })
+        setComment({ ...comment, text: value });
+
     }
+
+
+  const createComment = async () => {
+    try {
+      const result = await api.createComment(post, { ...comment});
+      console.log (result)
+      setComment("");
+      data();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  
+
     return (
         <ContainerPost>
             <PostHeader>
@@ -66,14 +83,14 @@ const Posts = ({ post, user }) => {
             {myForm.comment ?
                     <Reactions>
                         <li onClick={handleComment} style={{fontSize: '20px'}}>cancel</li>
-                        <input type="text" value={comment.text} onChange={handleText} />
-                        <li><AiOutlineSend /></li>
+                        <input type="text" value={comment.text} onChange={handleText} onSubmit={handleComment}/>
+                        <AiOutlineSend onClick={createComment}/>
                     </Reactions>
                 :
                 <Reactions>
-                    <li><AiOutlineLike /> &nbsp; <p>{myPost && myPost.likes && myPost.likes.length} likes</p> </li>
-                    <li ><AiOutlineDislike /> &nbsp; <p>{myPost && myPost.dislikes && myPost.dislikes.length} dislikes</p></li>
-                    <li onClick={handleComment}><FaRegComment /> &nbsp; <p>{myPost && myPost.comments && myPost.comments.length} comments</p></li>
+                    <li><AiOutlineLike />  <p style={{fontSize: '13px'}}>{myPost && myPost.likes && myPost.likes.length} likes</p> </li>
+                    <li ><AiOutlineDislike />  <p style={{fontSize: '13px'}}>{myPost && myPost.dislikes && myPost.dislikes.length} dislikes</p></li>
+                    <li onClick={handleComment}><FaRegComment />  <p style={{fontSize: '13px'}}>{myPost && myPost.comments && myPost.comments.length} comments</p></li>
                 </Reactions>}
         </ContainerPost>
     )

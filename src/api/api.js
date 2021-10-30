@@ -166,6 +166,7 @@ class api {
     createComment = async (idPost, payload) => {
         try {
           await this.api.post(`/post/${idPost}/comment`, payload);
+          return true
         } catch (error) {
           console.log(error);
           throw error.response
