@@ -2,8 +2,6 @@ import styled from "styled-components";
 import { FaTrashAlt } from "react-icons/fa";
 import { RiImageAddFill } from "react-icons/ri";
 import { AiFillLike, AiFillDislike} from "react-icons/ai";
-import { CgProfile } from "react-icons/cg";
-
 
 export const Trash = styled(FaTrashAlt)`
   color: #fff;
@@ -118,8 +116,6 @@ export const InputPost = styled.input`
   border-radius: 1.5vh;
   border-width:0.5px;
   border-color: red;
-
-  
 
   display: flex;
   align-items: center;
