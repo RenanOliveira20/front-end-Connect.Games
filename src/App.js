@@ -4,11 +4,14 @@ import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignUp from "./components/Home/SignUp";
 
+import UsersLobby from "./components/Users";
 import Feed from "./components/Feed";
 import Profile from "./components/Profile";
 import GameLobby from "./components/GamesLobby";
 import GameInfo from "./components/GamesInfo";
 import ProfileFriend from "./components/ProfileFriend";
+import PostDetail from "./components/PostDetail/index";
+
 
 import UsersLobby from "./components/Users";
 import PostDetail from "./components/PostDetail/index";
@@ -32,7 +35,6 @@ const App = () => {
           <GameInfo {...props}/>
         }
         />
-
         <Route
           path='/users'
           component={UsersLobby}

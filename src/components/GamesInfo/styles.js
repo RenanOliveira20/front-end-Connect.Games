@@ -43,8 +43,7 @@ export const Article = styled.article`
     width:90%;
     min-height:90vh;
     
-`
-
+    `
 export const Banner = styled.img `
     width: 40%;
 
