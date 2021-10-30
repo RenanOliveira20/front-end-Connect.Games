@@ -7,7 +7,7 @@ import NavBar from '../Navbar/Navbar';
 import Footer from '../Footer';
 import SearchBar from "../Users/SearchBar";
 
-import { Lobby, List } from "./styles";
+import {  List } from "./styles";
 import { ImageLeft, ImageRight, PageComponent, Section, Article } from "../GamesInfo/styles";
 
 

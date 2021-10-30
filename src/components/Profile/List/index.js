@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Posts from './Post';
 
 import { FavoriteIcon, FeedIcon, ListContainer, ListPage } from './style';
-import {Section} from '../../GamesInfo/styles'
-import { height } from 'dom-helpers';
 
-const List = ({user}) => {
+
+const List = ({ user, fetchData}) => {
     const [button, setButton] = useState({ feed: true, favorite: false })
     const handleValues = ({ target: { name } }) => {
         const newValues = {
@@ -26,6 +25,10 @@ const List = ({user}) => {
             setButton({ ...button, ...newValues })
         }
     }
+
+    useEffect(()=>{
+        fetchData()
+    },[])
 
 
     return (
@@ -51,8 +54,6 @@ const List = ({user}) => {
                     :
                     null
                 }
-
-
 
         </>
     )

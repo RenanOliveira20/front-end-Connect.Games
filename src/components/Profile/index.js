@@ -38,7 +38,7 @@ const Profile = () => {
 
     <>
         <Nav />
-                    <ProfileCard>
+                <ProfileCard>
                     <Container>
 
                         <ImageContainer>
@@ -61,8 +61,8 @@ const Profile = () => {
                         </FollowContainer>
 
                         </Container>
-                    </ProfileCard>
-                    <List user ={profile}/>
+                </ProfileCard>
+                    <List user={profile} fetchData={fetchData}/>
                 <Footer/>
     </>
     );

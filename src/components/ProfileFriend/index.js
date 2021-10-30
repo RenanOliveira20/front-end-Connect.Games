@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router';
 import api from '../../api/api';
 import Follow from '../Profile/Follow/';
 import { FollowContainer, ProfileCard, Container, UserConfig, CountValues, ImageContainer } from './styles';
 import Nav from '../Navbar/Navbar'
-import { Button, Image } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import List from '../Profile/List';
 import { CgProfile } from "react-icons/cg";
 

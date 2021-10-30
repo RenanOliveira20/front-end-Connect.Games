@@ -13,7 +13,6 @@ import SearchBar from "./SearchBar";
 const UsersLobby = () => {
 
     const [users, setUsers] = useState([])
-    const [search, setSearch] = useState([])
 
     const userDb = async () => {
         const result = await api.getAllUser()
