@@ -41,7 +41,7 @@ export const Article = styled.article`
     align-items: center;
 
     width:90%;
-    
+    min-height:90vh;
 `
 
 export const Banner = styled.img `

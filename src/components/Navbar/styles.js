@@ -1,13 +1,10 @@
 import styled from "styled-components";
 import { CgProfile } from "react-icons/cg";
-
 export const Img = styled.img`
   height: 5vh;
-
   @media screen and (max-width: 150px) {
   }
 `
-
 export const Profile = styled(CgProfile)`
   color: #fff;
   width: auto;
@@ -18,11 +15,13 @@ export const Profile = styled(CgProfile)`
 `;
 
 export const DivButtons = styled.div`
+  width: 10vw;
+  display:flex;
+  justify-content:space-evenly;
   align-items: center;
   @media screen and (max-width: 768px) {
   }
 `;
-
 export const DivProfile = styled.div`
   margin-right: 20px;
   color: white;
@@ -36,7 +35,6 @@ export const DivProfile = styled.div`
   @media screen and (max-width: 768px) {
   }
 `;
-
 export const DivNavbar = styled.div`
   display: flex;
   height: 100%;
@@ -46,7 +44,6 @@ export const DivNavbar = styled.div`
   @media screen and (max-width: 768px) {
   }
 `;
-
 export const ImgProfile = styled.div`
   width: 60px;
   height: 60px;
@@ -58,6 +55,5 @@ export const ImgProfile = styled.div`
     width: 60px;
   }
   @media screen and (max-width: 768px) {
-
   }
 `;

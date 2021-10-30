@@ -12,14 +12,12 @@ import logo from "../../images/navbar-logo.png";
 import { Navbar, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import api from "../../api/api";
-
 const NavBar = () => {
   const history = useHistory();
   const [userInfo, setUserInfo] = useState({
     username: "",
     profilePicture: "",
   });
-
   const getProfile = async () => {
     try {
       const user = await api.getProfile();
@@ -30,11 +28,9 @@ const NavBar = () => {
     localStorage.removeItem("Authorization");
     history.push("/");
   };
-
   useEffect(() => {
     getProfile();
   }, []);
-
   return (
     <Navbar bg="dark" variant="dark"  style={{width:'100%', height: '70px'}}>
       <Navbar.Brand style={{height : '100%' , marginLeft: '20px'}}>
@@ -46,6 +42,9 @@ const NavBar = () => {
         <DivButtons>
           <Link to="/games">
             <Button variant="outline-danger">Games</Button>
+          </Link>
+          <Link to="/users">
+            <Button variant="outline-danger">Users</Button>
           </Link>
         </DivButtons>
         <DivProfile>
@@ -67,5 +66,4 @@ const NavBar = () => {
     </Navbar>
   );
 };
-
 export default NavBar;

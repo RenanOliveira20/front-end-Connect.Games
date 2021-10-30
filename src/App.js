@@ -4,6 +4,7 @@ import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignUp from "./components/Home/SignUp";
 
+import UsersLobby from "./components/Users";
 import Feed from "./components/Feed";
 import Profile from "./components/Profile";
 import GameLobby from "./components/GamesLobby";
@@ -29,7 +30,10 @@ const App = () => {
           <GameInfo {...props}/>
         }
         />
-        
+        <Route
+          path='/users'
+          component={UsersLobby}
+        />
       </Switch>
     </div>
   );
