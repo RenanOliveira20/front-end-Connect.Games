@@ -4,7 +4,7 @@
 
  ![Start Screen](./src/images/connectLogo.jpeg)
 
- Demo [HERE]('') **IROBEERS**
+ Demo [HERE]('') **CONNECT GAMES**
 
 ### Introduction
 
@@ -12,10 +12,10 @@
 
 * The social network dedicated to those who are crazy about games.
 Here you can have your most played games as favorites and follow your colleagues.
-### 📋 Requirements to play
+### 📋 Requirements to access
 
 * Internet
-
+* sign up
 ## 📦 Development
 
 JavaScript | Axios | React | NodeJs | Express | MongoDB
