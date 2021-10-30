@@ -10,7 +10,7 @@ import { Lobby, List } from "./styles";
 import { ImageLeft, ImageRight, PageComponent } from "../GamesInfo/styles";
 
 
-export const GameLobby = () => {
+const GameLobby = () => {
 
     const [games, setGames] = useState([])
 
