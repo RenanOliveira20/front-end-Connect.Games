@@ -76,7 +76,7 @@ class api {
     getOneGame = async (id) => {
         try {
 
-            const result = await this.apiOne.get(`${id}?key=f2e297b35ae2447e9870c0c79c810359`)
+            const result = await this.apiOne.get(`${id}?key=16bcb47270ed4224b57be626b618722e`)
 
             return result.data
         } catch (error) {
@@ -218,6 +218,7 @@ class api {
     putUserGameFavorite = async (idGame, payload) => {
         try {
             await this.api.put(`/profile/${idGame}/favorite`, payload)
+        
         } catch (error) {
             console.log(error)
             throw error.response
