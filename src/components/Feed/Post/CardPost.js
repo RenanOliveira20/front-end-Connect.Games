@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+
 import api from "../../../api/api";
-import { Trash, Like, Dislike, Post, Comments, LikeDislike, Profile, ImgProfile } from "./styles";
-import { Card, Button } from "react-bootstrap";
+
+import {  Button } from "react-bootstrap";
 import FormComment from "../Comment/ReviewFormComment";
 import CardComment from "../Comment/CardComment";
+
+import { Trash, Like, Dislike,  Comments, ImgProfile, PostContainer, PostUserContainer, UserPost, PostDiv, TextDiv, PostSection } from "./styles";
 
 const CardPost = (props) => {
   const { data: post, getPosts } = props;
@@ -50,55 +53,63 @@ const CardPost = (props) => {
   }
 
   return (
-    <Post>
-      <Card style={{ width: "50%", height: "50%" }}>
-      <div>
-      <ImgProfile>
-              {post.user.profilePicture ? (
+    <PostContainer>
+      <PostSection>
+        <PostDiv>
+          <PostUserContainer>
+            
+            <ImgProfile>
+
+              <a href=''>
                 <img src={post.user.profilePicture} alt={post.user.username} />
-              ) : (
-                <Profile />
-              )}
+              </a>
+        
+              <a className= "p-3" href=''>{post.user.username}</a>
             </ImgProfile>
-      <span className= "p-3">{post.user.username}</span>
-      </div>
-          <Card.Text>{post.text}</Card.Text>
-        {post.imageUrl ? <Card.Img variant="top" src={post.imageUrl} /> : null}
-        <Card.Body>
-          <LikeDislike>
-          <p className= "m-2">liked: {post.likes.length}</p> 
-          <p className= "m-2">did not like: {post.dislikes.length}</p>
-          </LikeDislike>
-          <Button variant="danger m-1" onClick={reactionLike}>
-            <Like />
-          </Button>
-          <Button
-            variant="danger m-1"
-            onClick={reactionDislike}
-          >
-            <Dislike />
-          </Button>
-          <Button variant="danger m-1" onClick={deletePost}>
-            <Trash />
-          </Button>
-        </Card.Body>
-        {showFormComment ? (
-          <FormComment
-            idPost={post._id} getPosts={getPosts}
-            onCancel={() => setShowFormComment(false) }
-          />
-        ) : (
-          <Button variant="danger m-1" onClick={() => setShowFormComment(true)}>
-            Comment
-          </Button>
-        )}
+
+              <TextDiv>
+                {post.text ? <UserPost>{post.text}</UserPost>: null }
+                {post.imageUrl ? <UserPost><img variant="top" src={post.imageUrl} /></UserPost> : null}
+              </TextDiv>
+
+          </PostUserContainer>
+
+            {showFormComment ? (
+              <FormComment
+                idPost={post._id} getPosts={getPosts}
+                onCancel={() => setShowFormComment(false) }
+              />
+              ) : (
+              <Button variant="danger m-1" onClick={() => setShowFormComment(true)}>
+                Comment
+              </Button>
+            )}
+        </PostDiv>
+
+
+        <PostDiv>
+            <Button variant="danger m-1" onClick={deletePost}>
+              <Trash />
+            </Button>
+            <Button variant="danger m-1" onClick={reactionLike}>
+              <Like />{post.likes.length}
+            </Button>
+
+            <Button
+              variant="danger m-1"
+              onClick={reactionDislike}
+            >
+              <Dislike />{post.dislikes.length}
+            </Button>
+        </PostDiv>
+      </PostSection>
+          
         <Comments>
           {post.comments.map((e) => {
             return <CardComment key={e._id} data={e} getPosts={getPosts} post={post} />;
           })}
         </Comments>
-      </Card>
-    </Post>
+    </PostContainer>
   );
 };
 

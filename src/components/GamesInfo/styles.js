@@ -12,7 +12,8 @@ export const PageComponent = styled.div`
     display: flex;
 
     width:100%;
-    
+    height:100vh;
+
 `
 
 export const ImageRight = styled.div`

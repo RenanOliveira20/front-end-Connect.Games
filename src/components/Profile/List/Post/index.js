@@ -37,18 +37,17 @@ const Posts = ({ post, user }) => {
     }
 
 
-  const createComment = async () => {
-    try {
-      const result = await api.createComment(post, { ...comment});
-      console.log (result)
-      setComment("");
-      data();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    const createComment = async () => {
+        try {
+            await api.createComment(post, { ...comment });
+            handleComment()
+            data();
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-  
+
 
     return (
         <ContainerPost>
@@ -81,16 +80,31 @@ const Posts = ({ post, user }) => {
                 }
             </PostBody>
             {myForm.comment ?
-                    <Reactions>
-                        <li onClick={handleComment} style={{fontSize: '20px'}}>cancel</li>
-                        <input type="text" value={comment.text} onChange={handleText} onSubmit={handleComment}/>
-                        <AiOutlineSend onClick={createComment}/>
-                    </Reactions>
+                <Reactions>
+                    <li onClick={handleComment} style={{ fontSize: '20px' }}>cancel</li>
+                    <input type="text" value={comment.text} onChange={handleText} onSubmit={handleComment} />
+                    <AiOutlineSend onClick={createComment} />
+                </Reactions>
                 :
                 <Reactions>
-                    <li><AiOutlineLike />  <p style={{fontSize: '13px'}}>{myPost && myPost.likes && myPost.likes.length} likes</p> </li>
-                    <li ><AiOutlineDislike />  <p style={{fontSize: '13px'}}>{myPost && myPost.dislikes && myPost.dislikes.length} dislikes</p></li>
-                    <li onClick={handleComment}><FaRegComment />  <p style={{fontSize: '13px'}}>{myPost && myPost.comments && myPost.comments.length} comments</p></li>
+                    <li>
+                        <AiOutlineLike />
+                        <Link to={`/post/${post}/:${user._id}`}>
+                            <p style={{ fontSize: '13px' }}>{myPost && myPost.likes && myPost.likes.length} likes</p>
+                        </Link>
+                    </li>
+                    <li >
+                        <AiOutlineDislike />
+                        <Link to={`/post/${post}/:${user._id}`}>
+                            <p style={{ fontSize: '13px' }}>{myPost && myPost.dislikes && myPost.dislikes.length} dislikes</p>
+                        </Link>
+                    </li>
+                    <li onClick={handleComment}>
+                        <FaRegComment />
+                        <Link to={`/post/${post}/:${user._id}`}>
+                            <p style={{ fontSize: '13px' }}>{myPost && myPost.comments && myPost.comments.length} comments</p>
+                        </Link>
+                    </li>
                 </Reactions>}
         </ContainerPost>
     )

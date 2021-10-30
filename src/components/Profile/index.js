@@ -63,7 +63,7 @@ const Profile = () => {
                         </Container>
                     </ProfileCard>
                     <List user ={profile}/>
-        <Footer/>
+                <Footer/>
     </>
     );
 }

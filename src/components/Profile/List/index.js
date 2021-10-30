@@ -41,6 +41,7 @@ const List = ({user}) => {
                         <button name='two' onClick={handleValues}><FavoriteIcon /> Favorite Games </button>
                 }
             </ListContainer>
+            
             {
                 button &&  button.feed ?
                     user && user.posts.map((e, i)=>{

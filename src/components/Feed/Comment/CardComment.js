@@ -1,7 +1,10 @@
 import React from "react";
 import api from "../../../api/api";
-import { Trash, Like, Dislike, Comment, LikeDislike, Profile, ImgProfile } from "./styles";
+
 import { Card, Button } from "react-bootstrap";
+
+import { Trash, Like, Dislike, Comments, ImgProfile, PostUserContainer, UserPost, PostDiv, TextDiv } from '../Post/styles'
+import { PostContainer, PostSection } from './styles'
 
 const CardComment = ({ data: comment, post, getPosts }) => {
 
@@ -45,34 +48,37 @@ const CardComment = ({ data: comment, post, getPosts }) => {
   }
 
   return (
-    <Comment>
-      <Card style={{ width: "70%" }}>
-        <ImgProfile>
-          {post && post.user && post.user.profilePicture ? (
-            <img src={post.user.profilePicture} alt={post.user.username} />
-          ) : (
-            <Profile />
-          )}
-        </ImgProfile>
-        <span className="p-3">{post && post.user && post.user.username}</span>
-        <Card.Body>
-          <Card.Text>{comment.text}</Card.Text>
-          <LikeDislike>
-            <p className="m-2">liked: {comment.likes.length}</p>
-            <p className="m-2">did not like: {comment.dislikes.length}</p>
-          </LikeDislike>
-          <Button variant="danger m-1" onClick={reactionLike}>
-            <Like />
-          </Button>
-          <Button variant="danger m-1" onClick={reactionDislike}>
-            <Dislike />
-          </Button>
-          <Button variant="danger m-1" onClick={deleteComment}>
-            <Trash />
-          </Button>
-        </Card.Body>
-      </Card>
-    </Comment>
+    <PostContainer>
+      <PostSection>
+        <PostUserContainer>
+
+          <ImgProfile>
+
+            <a href=''>
+              <img src={post.user.profilePicture} alt={post.user.username} />
+            </a>
+
+            <a className="p-3" href=''>{post && post.user && post.user.username}</a>
+          </ImgProfile>
+
+            <TextDiv>
+              <UserPost>{comment.text}</UserPost>
+            </TextDiv>
+        </PostUserContainer>
+
+        <PostDiv>
+              <Button variant="danger m-1" onClick={deleteComment}>
+                <Trash />
+              </Button>
+              <Button variant="danger m-1" onClick={reactionLike}>
+                <Like />{comment.likes.length}
+              </Button>
+              <Button variant="danger m-1" onClick={reactionDislike}>
+                <Dislike/>{comment.dislikes.length}
+              </Button>
+        </PostDiv>
+      </PostSection>
+    </PostContainer>
   );
 };
 

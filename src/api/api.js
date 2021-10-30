@@ -43,13 +43,11 @@ class api {
         }
     }
     signUp = async (payload) => {
-
-        try {
-            const result = await this.api.get('/games/all')
-            return result
-        } catch (error) {
+        try{
+            await this.api.post('/auth/signup', payload);
+            return true
+        } catch(error) {
             console.error(error)
-            throw error.response
         }
     }
 

@@ -11,6 +11,7 @@ import { PageComponent } from "./styles";
 
 import api from "../../api/api";
 
+
 const Feed = () => {
   const [posts, setPosts] = useState([]);
 
@@ -27,28 +28,43 @@ const Feed = () => {
     getPosts();
   }, []);
   return (
-    <div>
+    <>
+
       <NavBar />
       <PageComponent>
+
         <ImageRight />
 
         <Article>
           <Section>
-            <FormPost getPosts={getPosts} />
-          </Section>
-          <Section>
             <CarouselGame />
           </Section>
+
           <Section>
-            {posts.map((e) => {
-              return <CardPost key={e._id} data={e} getPosts={getPosts} />;
-            })}
+            <FormPost getPosts={getPosts} />
           </Section>
+          
+          <Section>
+            {posts.length === 0?
+              <div className='d-flex align-items-center justify-content-center'style={{height:'18vh', width:'100%' }}>
+                <h1>You don't have any posts yet!</h1>
+              </div>
+              : posts.map((e) => {
+                return <CardPost key={e._id} data={e} getPosts={getPosts} />;
+              })
+            
+            }
+          </Section>
+
         </Article>
+
         <ImageLeft />
+
       </PageComponent>
-      <Footer />
-    </div>
+      
+      <Footer/>
+
+    </>
   );
 };
 
