@@ -84,3 +84,20 @@ export const ImgProfile = styled.div`
 
   }
 `;
+
+export const PostContainer = styled.div`
+  
+  width: 40vw;
+
+  margin: 2vh;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+`
+export const PostSection = styled.section`
+
+  width: 45vw;
+  display: flex;
+`

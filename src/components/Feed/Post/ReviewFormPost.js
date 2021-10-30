@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import api from "../../../api/api";
 import { Form, Button } from "react-bootstrap";
-import { ImageAdd, DivFormPost } from "./styles";
+import { ImageAdd, DivFormPost, InputPost, PostContainer, ButtonsPost } from "./styles";
 
 const FormPost = (props) => {
 
@@ -35,28 +35,29 @@ const FormPost = (props) => {
   
   
   return (
-    <DivFormPost>
-      <Form style={{ width: "50%" }}>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Post</Form.Label>
-          <Form.Control
+    <>
+        <PostContainer>
+          
+          <InputPost
+            value={post.text}
+            placeholder='Post something here!!'
+            onChange={postText}
             as="textarea"
             rows={3}
-            value={post.text}
-            onChange={postText}
           />
-        </Form.Group>
-        <Button variant="danger m-2" onClick={createPost}>
-          Send
-        </Button>
-        <label htmlFor= "1" className= "btn btn-danger">
-        {/* <Button variant="danger"> */}
-          <ImageAdd/>  
-        {/* </Button> */}
-        </label>
-        <input type='file' id="1" onChange={postImage} style={{display: "none"}} />
-      </Form>
-    </DivFormPost>
+
+          <ButtonsPost>
+            <label htmlFor= "1" className= "btn btn-danger" style={{height:'4vh'}}>
+              <ImageAdd/>
+            </label>
+            <input type='file' id="1" onChange={postImage} style={{ display: "none" , height: '4vh'}} />
+            <Button variant="danger" onClick={createPost} style={{ height: '4vh' }}>
+              Send
+            </Button>
+          </ButtonsPost>
+
+        </PostContainer>
+    </>
   );
 };
 

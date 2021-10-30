@@ -72,7 +72,6 @@ const Profile = () => {
 
                 <Section>
                     <List user ={profile}/>
-
                 </Section>
 
             </Article>

@@ -42,15 +42,6 @@ const List = ({user}) => {
                 }
             </ListContainer>
             
-            {/* {user.posts.length === 0 ?
-            
-                <h1>asodijsalkjdsa</h1>
-                : 
-                
-            } */}
-
-            {console.log(user.posts)}
-            
             {
             button.feed ?
                 user && user.posts.map((e, i)=>{
