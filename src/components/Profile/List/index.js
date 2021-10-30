@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-
+import React, { useState , useEffect} from 'react';
+import api from '../../../api/api';
 import Posts from './Post';
 
-import { FavoriteIcon, FeedIcon, ListContainer, ListPage } from './style';
-import {Section} from '../../GamesInfo/styles'
-import { height } from 'dom-helpers';
+import { FavoriteIcon, FeedIcon, ListContainer } from './style';
 
-const List = ({user}) => {
+const List = ({user}, props) => {
+
+    const [profile, setProfile] = useState({});
+    
     const [button, setButton] = useState({ feed: true, favorite: false })
     const handleValues = ({ target: { name } }) => {
         const newValues = {
@@ -44,13 +45,7 @@ const List = ({user}) => {
                 }
             </ListContainer>
 
-                {button &&  button.feed ?
-                    user && user.posts.map((e, i)=>{
-                        return <Posts key={i} post = {e} user = {user}/>
-                    })
-                    :
-                    null
-                }
+                
 
 
 
