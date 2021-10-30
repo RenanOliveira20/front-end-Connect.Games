@@ -4,6 +4,8 @@ import imgRight from '../../images/back-right.png';
 import imgLeft from '../../images/back-left.png';
 import imgBack from '../../images/back.png';
 
+import { MdOutlineFavoriteBorder, MdOutlineFavorite } from 'react-icons/md';
+
 export const PageComponent = styled.div`
     background-image: url(${imgBack});
 
@@ -140,5 +142,36 @@ export const LobbyComment = styled.div`
     height: 40vh;
 
     margin: 3vh;
+
+`
+
+export const ButtonUnFavorite = styled(MdOutlineFavoriteBorder)`
+  color: rgba(119,21,21,1);
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  @media screen and (max-width: 768px) {
+
+  }
+`
+
+export const ButtonFavorite = styled(MdOutlineFavorite)`
+  color: rgba(119,21,21,1);
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  @media screen and (max-width: 768px) {
+
+  }
+
+`
+
+export const TitleContainer = styled.div`
+
+  width: 30vw;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
 `

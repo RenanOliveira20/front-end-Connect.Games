@@ -4,6 +4,7 @@ import NavBar from "../Navbar/Navbar";
 import CardPost from "./Post/CardPost";
 import CarouselGame from "./CarouselGames/CarouselGame";
 import FormPost from "./Post/ReviewFormPost";
+import Footer from "../Footer";
 
 import { ImageRight, ImageLeft, Article, Section } from "../GamesInfo/styles";
 import { PageComponent } from "./styles";
@@ -46,7 +47,9 @@ const Feed = () => {
         </Article>
         <ImageLeft />
       </PageComponent>
+      <Footer />
     </div>
   );
 };
+
 export default Feed;
