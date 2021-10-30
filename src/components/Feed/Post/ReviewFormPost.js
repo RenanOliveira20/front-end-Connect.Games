@@ -36,27 +36,27 @@ const FormPost = (props) => {
   
   return (
     <>
-        <PostContainer>
+      <PostContainer>
           
-          <InputPost
-            value={post.text}
-            placeholder='Post something here!!'
-            onChange={postText}
-            as="textarea"
-            rows={3}
-          />
+        <InputPost
+          as="textarea"
+          rows={3}
+          value={post.text}
+          placeholder='Post something here!!'
+          onChange={postText}
+        />
 
-          <ButtonsPost>
-            <label htmlFor= "1" className= "btn btn-danger" style={{height:'4vh'}}>
-              <ImageAdd/>
-            </label>
-            <input type='file' id="1" onChange={postImage} style={{ display: "none" , height: '4vh'}} />
-            <Button variant="danger" onClick={createPost} style={{ height: '4vh' }}>
-              Send
-            </Button>
-          </ButtonsPost>
+        <ButtonsPost>
+          <label htmlFor= "1" className= "btn btn-danger" style={{height:'4vh'}}>
+            <ImageAdd/>
+          </label>
+          <input type='file' id="1" onChange={postImage} style={{ display: "none" , height: '4vh'}} />
+          <Button variant="danger" onClick={createPost} style={{ height: '4vh' }}>
+            Send
+          </Button>
+        </ButtonsPost>
 
-        </PostContainer>
+      </PostContainer>
     </>
   );
 };

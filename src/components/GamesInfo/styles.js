@@ -12,7 +12,6 @@ export const PageComponent = styled.div`
     display: flex;
 
     width:100%;
-    height:100vh;
 
 `
 
@@ -135,16 +134,6 @@ export const InputComment = styled.input`
 
 `
 
-export const LobbyComment = styled.div`
-
-    background-color: green;
-
-    width: 40vw;
-    height: 40vh;
-
-    margin: 3vh;
-
-`
 
 export const ButtonUnFavorite = styled(MdOutlineFavoriteBorder)`
   color: rgba(119,21,21,1);

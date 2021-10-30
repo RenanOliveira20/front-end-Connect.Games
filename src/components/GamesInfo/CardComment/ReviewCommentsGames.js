@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import api from '../../../api/api'
 
-import { Form, Button } from "react-bootstrap";
-import { DivFormComments } from './styles';
+import {  Button } from "react-bootstrap";
+import {  InputPost, PostContainer, ButtonsPost } from '../../Feed/Post/styles';
 
 const CommentsGames = (props) => {
 
-    const {idGame , game} = props;
+    const {idGame , game , updateGame} = props;
 
     const [comment, setComment] = useState('');
 
@@ -18,6 +18,8 @@ const CommentsGames = (props) => {
             setComment("");
         } catch (error) {
             console.log(error);
+        } finally {
+            updateGame();
         }
     };
 
@@ -26,22 +28,22 @@ const CommentsGames = (props) => {
     };
 
     return (
-        <DivFormComments>
-            <Form style={{ width: "50%" }}>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Comment</Form.Label>
-                    <Form.Control
-                        as="textarea"
-                        rows={3}
-                        value={comment}
-                        onChange={commentText}
-                    />
-                </Form.Group>
+        <PostContainer>
+
+                <InputPost
+                    as="textarea"
+                    rows={3}
+                    value={comment}
+                    placeholder='Comment something here!!'
+                    onChange={commentText}
+                />
+
+            <ButtonsPost>
                 <Button variant="outline-danger" onClick={createCommentGame}>
                     Send
                 </Button>
-            </Form>
-        </DivFormComments>
+            </ButtonsPost>
+        </PostContainer>
     );
 };
 

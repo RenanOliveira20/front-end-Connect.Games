@@ -2,8 +2,8 @@ import axios from 'axios';
 class api {
     constructor() {
         this.api = axios.create({
-            //baseURL: 'http://localhost:5000'
-            baseURL: 'https://api-connect-games-2.herokuapp.com/'
+            baseURL: 'http://localhost:5000'
+            // baseURL: 'https://api-connect-games-2.herokuapp.com/'
 
         })
 
@@ -219,6 +219,15 @@ class api {
         
         } catch (error) {
             console.log(error)
+            throw error.response
+        }
+    }
+
+    getAllUser = async () => {
+        try {
+            const result = await this.api.get(`/profile/all`)
+            return result.data
+        } catch (error) {
             throw error.response
         }
     }

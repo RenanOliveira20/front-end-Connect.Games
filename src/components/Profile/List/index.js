@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import Posts from './Post';
 
 import { FavoriteIcon, FeedIcon, ListContainer, ListPage } from './style';
+import {Section} from '../../GamesInfo/styles'
+import { height } from 'dom-helpers';
 
 const List = ({user}) => {
     const [button, setButton] = useState({ feed: true, favorite: false })
@@ -41,15 +43,16 @@ const List = ({user}) => {
                         <button name='two' onClick={handleValues}><FavoriteIcon /> Favorite Games </button>
                 }
             </ListContainer>
-            
-            {
-                button &&  button.feed ?
+
+                {button &&  button.feed ?
                     user && user.posts.map((e, i)=>{
                         return <Posts key={i} post = {e} user = {user}/>
                     })
                     :
                     null
-            }
+                }
+
+
 
         </ListPage>
     )
