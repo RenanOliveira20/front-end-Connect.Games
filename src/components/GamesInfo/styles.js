@@ -8,7 +8,7 @@ import { MdOutlineFavoriteBorder, MdOutlineFavorite } from 'react-icons/md';
 
 export const PageComponent = styled.div`
     background-image: url(${imgBack});
-
+    
     display: flex;
 
     width:100%;
@@ -42,8 +42,8 @@ export const Article = styled.article`
 
     width:90%;
     min-height:90vh;
-`
-
+    
+    `
 export const Banner = styled.img `
     width: 40%;
 

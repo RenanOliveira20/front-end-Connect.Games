@@ -10,7 +10,10 @@ import Profile from "./components/Profile";
 import GameLobby from "./components/GamesLobby";
 import GameInfo from "./components/GamesInfo";
 import ProfileFriend from "./components/ProfileFriend";
+
+import UsersLobby from "./components/Users";
 import PostDetail from "./components/PostDetail/index";
+
 
 const App = () => {
   return (
@@ -34,7 +37,7 @@ const App = () => {
           path='/users'
           component={UsersLobby}
         />
-      </Switch>
+  </Switch>
     </div>
   );
 };
