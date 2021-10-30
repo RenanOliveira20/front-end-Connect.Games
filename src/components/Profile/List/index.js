@@ -41,13 +41,22 @@ const List = ({user}) => {
                         <button name='two' onClick={handleValues}><FavoriteIcon /> Favorite Games </button>
                 }
             </ListContainer>
+            
+            {/* {user.posts.length === 0 ?
+            
+                <h1>asodijsalkjdsa</h1>
+                : 
+                
+            } */}
+
+            {console.log(user.posts)}
+            
             {
-                button.feed ?
-                    user && user.posts.map((e, i)=>{
-                        return <Posts key={i} post = {e} user = {user}/>
-                    })
-                    :
-                    null
+            button.feed ?
+                user && user.posts.map((e, i)=>{
+                    return <Posts key={i} post = {e} user = {user}/>
+                })
+                : null
             }
 
         </ListPage>
