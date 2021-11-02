@@ -6,7 +6,7 @@
 
  Demo [HERE](https://connect-games.herokuapp.com/) **CONNECT GAMES**
  
- back-end [HERE](https://github.com/RenanOliveira20/back-end-Connect.Games) **CONNECT GAMES**
+ Back-end [HERE](https://github.com/RenanOliveira20/back-end-Connect.Games) **CONNECT GAMES**
 
 
 ### Introduction
