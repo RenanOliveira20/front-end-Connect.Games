@@ -10,7 +10,6 @@ import Profile from "./components/Profile";
 import GameLobby from "./components/GamesLobby";
 import GameInfo from "./components/GamesInfo";
 import ProfileFriend from "./components/ProfileFriend";
-import PostDetail from "./components/PostDetail/index";
 
 
 const App = () => {
@@ -22,9 +21,8 @@ const App = () => {
         <Route path = '/signup' component = {SignUp}/>
         <Route path = '/feed' component = {Feed}/>
         <Route exact path = '/profile' component = {Profile}/>
-        <Route path = '/profile/:id' component = {ProfileFriend}/>
+        <Route exact path = '/profile/:id' component = {ProfileFriend}/>
         <Route exact path="/games" component={GameLobby} />
-        <Route exact path ="/post/:id/:user" component ={PostDetail}/>
         <Route 
           path='/games/:_id'
           render={(props) => 

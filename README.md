@@ -4,10 +4,13 @@
 
  ![Start Screen](./src/images/connectLogo.jpeg)
 
- Demo [HERE]('') **CONNECT GAMES**
+ Demo [HERE](https://connect-games.herokuapp.com/) **CONNECT GAMES**
+ 
+ Back-end [HERE](https://github.com/RenanOliveira20/back-end-Connect.Games) **CONNECT GAMES**
+
 
 ### Introduction
-
+git
 * Project module 3, Web Development course Ironhack wdpt may 2021.
 
 * The social network dedicated to those who are crazy about games.

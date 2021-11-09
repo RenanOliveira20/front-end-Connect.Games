@@ -1,7 +1,9 @@
+
+  
 import React, { useState, useEffect } from 'react';
 import api from '../../api/api';
 import Follow from '../Profile/Follow/';
-import { FollowContainer, ProfileCard, Container, UserConfig, CountValues, ImageContainer } from './styles';
+import { FollowContainer, ProfileCard, Container, UserConfig, CountValues, ImageContainer } from '../Profile/styles';
 import Nav from '../Navbar/Navbar'
 import { Button } from 'react-bootstrap';
 import List from '../Profile/List';
