@@ -8,7 +8,7 @@ import Footer from '../Footer';
 import CommentsGames from './CardComment/ReviewCommentsGames';
 import CardComment from './CardComment/index';
 
-import { Article, Banner, PageComponent, ImageRight, Info, InfoPlat, Section, Title, TitleSection, ImageLeft, PInfo, ButtonFavorite, ButtonUnFavorite, TitleContainer} from "./styles";
+import { Article, Banner, PageComponent, ImageRight, Info, InfoPlat, Section, Title, TitleSection, ImageLeft, PInfo, ButtonFavorite, ButtonUnFavorite, TitleContainer } from "./styles";
 
 
 
@@ -17,7 +17,7 @@ const GameInfo = (props) => {
     const [games, setGames] = useState([])
     const [comments, setComments] = useState([])
 
-    
+
     const userId = localStorage.getItem('userId')
 
 
@@ -26,13 +26,13 @@ const GameInfo = (props) => {
         setComments({ ...gameDb })
 
         const game = await api.getOneGame(gameDb.id)
-        setGames({...game})
-        
+        setGames({ ...game })
+
     }
-    
+
     const updateGame = async () => {
         const gameDb = await api.get_Id(props.match.params._id)
-        setComments({...gameDb})
+        setComments({ ...gameDb })
 
     }
 
@@ -43,9 +43,9 @@ const GameInfo = (props) => {
 
     const reactionFavorite = async () => {
         try {
-            if(comments.userfavorites.indexOf(userId) !== -1) {
+            if (comments.userfavorites.indexOf(userId) !== -1) {
                 await api.putGameUserFavorite(comments._id, { favorite: false });
-                await api.putUserGameFavorite(comments._id, { favorite: false});
+                await api.putUserGameFavorite(comments._id, { favorite: false });
             } else {
                 await api.putGameUserFavorite(comments._id, { favorite: true });
                 await api.putUserGameFavorite(comments._id, { favorite: true });
@@ -58,73 +58,73 @@ const GameInfo = (props) => {
     }
 
     return (
-    <>
-        {games.id?
         <>
-            <NavBar/>
-            <PageComponent>
+            {games.id ?
+                <>
+                    <NavBar />
+                    <PageComponent>
 
-                <ImageRight/>
+                        <ImageRight />
 
-                <Article>
-                    
-                    <Section>
+                        <Article>
 
-                        <Banner src={games.background_image} />
-                        <TitleContainer>
-                            <Title>{games.name}</Title>
-                                
-                            {comments.userfavorites.indexOf(userId) !== -1?                             
-                                <ButtonFavorite onClick={reactionFavorite}/>
-                                : <ButtonUnFavorite onClick={reactionFavorite}/>
-                            }
-                        </TitleContainer>
-                        <h4>Rating: {games.rating}</h4>
+                            <Section>
 
-                    </Section>            
+                                <Banner src={games.background_image} />
+                                <TitleContainer>
+                                    <Title>{games.name}</Title>
 
-                    <Section>
+                                    {comments.userfavorites.indexOf(userId) !== -1 ?
+                                        <ButtonFavorite onClick={reactionFavorite} />
+                                        : <ButtonUnFavorite onClick={reactionFavorite} />
+                                    }
+                                </TitleContainer>
+                                <h4>Rating: {games.rating}</h4>
 
-                        <TitleSection>Description:</TitleSection>
-                        <Info>{games.description}</Info>
+                            </Section>
 
-                    </Section>
+                            <Section>
 
-                    <Section>
+                                <TitleSection>Description:</TitleSection>
+                                <Info>{games.description}</Info>
 
-                        <TitleSection>Plataforms:</TitleSection>
+                            </Section>
 
-                        <InfoPlat>
-                            {games.platforms && games.platforms.map( e => 
-                                e.platform && e.platform.name && <PInfo key={e._id}>{e.platform.name}</PInfo>
-                            )}                   
-                        </InfoPlat>
+                            <Section>
 
-                    </Section>
+                                <TitleSection>Plataforms:</TitleSection>
 
-                    <Section>
+                                <InfoPlat>
+                                    {games.platforms && games.platforms.map(e =>
+                                        e.platform && e.platform.name && <PInfo key={e._id}>{e.platform.name}</PInfo>
+                                    )}
+                                </InfoPlat>
 
-                        <TitleSection>Comments:</TitleSection>
+                            </Section>
 
-                        <CommentsGames game={comments} idGame={comments._id} updateGame={updateGame}/>
-                                                     
-                        {comments.comments && comments.comments.map((e) => {
-                            return <CardComment key={e._id} data={e} updateGame={updateGame} game={comments}/>
-                        })}                      
+                            <Section>
 
-                    </Section>
+                                <TitleSection>Comments:</TitleSection>
 
-                </Article>
+                                <CommentsGames game={comments} idGame={comments._id} updateGame={updateGame} />
 
-                <ImageLeft />
+                                {comments.comments && comments.comments.map((e) => {
+                                    return <CardComment key={e._id} data={e} updateGame={updateGame} game={comments} />
+                                })}
 
-            </PageComponent>
+                            </Section>
 
-            <Footer/>
+                        </Article>
 
-        </> : <h1> Loading... </h1>
-        }
-    </>
+                        <ImageLeft />
+
+                    </PageComponent>
+
+                    <Footer />
+
+                </> : <h1> Loading... </h1>
+            }
+        </>
     )
 }
 

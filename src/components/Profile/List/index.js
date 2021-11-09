@@ -6,6 +6,9 @@ import { FavoriteIcon, FeedIcon, ListContainer } from './style';
 
 const List = ({user}, props) => {
 
+
+const List = ({ user, fetchData }) => {
+
     const [profile, setProfile] = useState({});
     
     const [button, setButton] = useState({ feed: true, favorite: false })
@@ -29,12 +32,17 @@ const List = ({user}, props) => {
     }
 
 
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+
     return (
         <>
 
             <ListContainer>
                 {
-                    button && button.feed  ?
+                    button && button.feed ?
                         <button name='one' style={{ borderBottom: '1px solid red' }} onClick={handleValues}><FeedIcon /> Posts</button> :
                         <button name='one' onClick={handleValues}><FeedIcon /> Posts</button>
                 }
@@ -45,7 +53,15 @@ const List = ({user}, props) => {
                 }
             </ListContainer>
 
-                
+
+            {button && button.feed ?
+                user && user.posts.map((e, i) => {
+                    return <Posts key={i} post={e} user={user} />
+                })
+                :
+                null
+            }
+
 
         </>
     )
