@@ -118,13 +118,13 @@ const Posts = ({ user, post, fetchData }) => {
                 </div>
                 <PostOptions onClick={handleForm}>
                     {myForm.form ? <>
-                        <ImMenu4 style={{ color: '#dc3545' }} />
+                        <ImMenu4 style={{ color: 'white' }} />
                         <ul>
                             <li onClick={deletePost}><span >Delete</span> </li>
                         </ul>
                     </>
                         :
-                        <ImMenu3 style={{ color: '#dc3545' }} />
+                        <ImMenu3 style={{ color: 'white' }} />
                     }
                 </PostOptions>
             </PostHeader>

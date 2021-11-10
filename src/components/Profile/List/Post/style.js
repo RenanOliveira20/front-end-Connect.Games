@@ -4,7 +4,7 @@ export const ContainerPost = styled.div`
     width: 100%;
     margin-top: 1%;
     margin-bottom: 1%;
-    background-color: lightgrey;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(71,29,29,1) 20%, rgba(71,29,29,1) 97%, rgba(255,255,255,0) 100%);
     @media screen and (max-width: 400px){
         width:100%;
         margin-left: 0
@@ -125,11 +125,11 @@ export const Reactions = styled.ul`
         list-style: none;
         font-size: 26px;
         display: flex;
-        color: #dc3545;
+        color: white;
         svg{
             margin-top: 5px;
             &:hover{
-                color: #ff8c66 ;
+                color: grey ;
             };
         };
         p {
@@ -151,7 +151,7 @@ export const Reactions = styled.ul`
     svg{
             width:100%;
             height:30px;
-            color: '#dc3545'
+            color: white
         }
 
     @media screen and (max-width: 400px){
