@@ -61,10 +61,10 @@ const CardPost = (props) => {
             <ImgProfile>
 
               <a href=''>
-                <img src={post.user.profilePicture} alt={post.user.username} />
+                <img src={post && post.user && post.user.profilePicture} alt={post && post.user && post.user.username} />
               </a>
         
-              <a className= "p-3" href=''>{post.user.username}</a>
+              <a className= "p-3" href=''>{post && post.user && post.user.username}</a>
             </ImgProfile>
 
               <TextDiv>
@@ -92,20 +92,20 @@ const CardPost = (props) => {
               <Trash />
             </Button>
             <Button variant="danger m-1" onClick={reactionLike}>
-              <Like />{post.likes.length}
+              <Like />{post && post.likes && post.likes.length}
             </Button>
 
             <Button
               variant="danger m-1"
               onClick={reactionDislike}
             >
-              <Dislike />{post.dislikes.length}
+              <Dislike />{post && post.dislikes && post.dislikes.length}
             </Button>
         </PostDiv>
       </PostSection>
           
         <Comments>
-          {post.comments.map((e) => {
+          {post && post.comments && post.comments.map((e) => {
             return <CardComment key={e._id} data={e} getPosts={getPosts} post={post} />;
           })}
         </Comments>

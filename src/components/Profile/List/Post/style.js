@@ -6,7 +6,6 @@ export const ContainerPost = styled.div`
     margin-bottom: 1%;
     margin-left: 25%;
     background-color: lightgrey;
-    border: 1px solid black; 
     @media screen and (max-width: 400px){
         width:100%;
         margin-left: 0
@@ -159,7 +158,6 @@ export const Reactions = styled.ul`
         width: 100%;
     height: 40px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     margin: 10px;
     li{ width: 100%;
@@ -170,12 +168,12 @@ export const Reactions = styled.ul`
             width:100%;
             height:30px;
         }
-        p{
-            width:90%;
-            font-size: 15px;
-            display:flex;
-            justify-content:center;
-            align-items:center
+        a{
+
+            width:100%;
+            p{
+                font-size: 15px;
+            }
         }
     }
     input {

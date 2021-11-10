@@ -1,13 +1,10 @@
 import React, { useState , useEffect} from 'react';
-import api from '../../../api/api';
-import Posts from './Post';
-
+import Favorites from './FavoriteGames';
+import Posts from './Post'
 import { FavoriteIcon, FeedIcon, ListContainer } from './style';
 
-const List = ({user}, props) => {
+const List = ({user, fetchData}) => {
 
-    const [profile, setProfile] = useState({});
-    
     const [button, setButton] = useState({ feed: true, favorite: false })
     const handleValues = ({ target: { name } }) => {
         const newValues = {
@@ -44,9 +41,18 @@ const List = ({user}, props) => {
                         <button name='two' onClick={handleValues}><FavoriteIcon /> Favorite Games </button>
                 }
             </ListContainer>
-
-                
-
+            {
+                button && button.feed?
+                user && user.posts && user.posts.map((e, i)=> <Posts key={i} post={e} user={user} fetchData={fetchData}/>)
+                :
+                null
+            }
+            {
+                button && button.favorite ?
+                user && user.favoriteGames && user.favoriteGames.map((e,i)=> <Favorites key={i} game={e} fetchData = {fetchData}/>)  
+                :
+                null
+            }
         </>
     )
 }

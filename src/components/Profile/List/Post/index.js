@@ -2,23 +2,46 @@ import React, { useState, useEffect } from 'react'
 import api from '../../../../api/api'
 import { BodyImage, ContainerPost, HeaderImage, PostBody, PostHeader, PostOptions, ProfileName, Reactions } from './style'
 import { ImMenu3, ImMenu4 } from 'react-icons/im'
-import { AiOutlineLike, AiOutlineDislike,  AiOutlineSend } from 'react-icons/ai'
+import { AiOutlineLike, AiOutlineDislike, AiOutlineSend, AiFillLike, AiFillDislike } from 'react-icons/ai'
 import { FaRegComment } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
-const Posts = ({ post, user }) => {
+const Posts = ({ user, post, fetchData }) => {
     const [myPost, setPost] = useState({})
     const [myForm, setForm] = useState({ form: false, comment: false })
     const [comment, setComment] = useState({ text: '' })
+    const [reactions, setReaction] = useState()
     const data = async () => {
         const myData = await api.getOnePost(post)
         if (myData) {
             setPost({ ...myPost, ...myData })
         }
+
     };
+    const disliked = myPost && myPost.dislikes && myPost.dislikes.filter((e)=> e === user._id)
+        const liked = myPost && myPost.likes && myPost.likes.filter((e)=> e === user._id)
+    const myReactions = () => {
+            if (liked) {
+                setReaction({ ...reactions, like: true })
+            }
+            if (!liked) {
+                setReaction({ ...reactions, like: false })
+            }
+            console.log(disliked, myPost)
+            if (disliked) {
+                setReaction({ ...reactions, dislike: true })
+            }
+            if (!disliked) {
+                setReaction({ ...reactions, dislike: false })
+            }
+
+    }
+
     useEffect(() => {
-        data()
+        data();
+        myReactions()
     }, [])
+
     const handleForm = () => {
         const newForm = {
             form: !myForm.form
@@ -38,6 +61,7 @@ const Posts = ({ post, user }) => {
     }
 
 
+
     const createComment = async () => {
         try {
             await api.createComment(post, { ...comment });
@@ -49,25 +73,40 @@ const Posts = ({ post, user }) => {
     };
     const deletePost = async () => {
         try {
-          await api.deletePost(post);
-          data();
+            await api.deletePost(post);
         } catch (error) {
-          console.log(error);
+            console.log(error);
         }
-      };
-    
-      const reactionLike = async () => {
-        try {
-          if( post.likes.indexOf(user) !==  -1 ) {
-            await api.putReactionsPost(post, {like: false})  
-          } else {
-            await api.putReactionsPost(post, {like: true})
-          }
-        } catch (error) {
-          console.log(error)
-        } finally {
-          data()
+        finally{
+            fetchData()
         }
+    };
+    const reactionDislike = async () => {
+        if (disliked.length === 0) {
+            if(liked.length > 0){
+                await api.putReactionsPost(myPost._id, {like: false})
+            }
+            await api.putReactionsPost(myPost._id, { dislike: true })
+            data()
+        } else {
+            await api.putReactionsPost(myPost._id, { dislike: false })
+            data()
+        }
+    }
+
+    const reactionLike = async () => {
+        if (liked.length === 0) {
+            if (disliked.length > 0) {
+                await api.putReactionsPost(myPost._id, { dislike: false })
+                data()
+            }
+            await api.putReactionsPost(myPost._id, { like: true })
+            data()
+        } else {
+            await api.putReactionsPost(myPost._id, { like: false })
+            data()
+        }
+    }
 
 
     return (
@@ -81,7 +120,7 @@ const Posts = ({ post, user }) => {
                     {myForm.form ? <>
                         <ImMenu4 style={{ color: '#dc3545' }} />
                         <ul>
-                            <li><span >Delete</span> </li>
+                            <li onClick={deletePost}><span >Delete</span> </li>
                         </ul>
                     </>
                         :
@@ -108,24 +147,32 @@ const Posts = ({ post, user }) => {
                 :
                 <Reactions>
                     <li>
-                        <AiOutlineLike />
+                        {
+                            liked && liked.length > 0 ?
+                                <AiFillLike onClick={reactionLike} /> :
+                                < AiOutlineLike onClick={reactionLike} />
+                        }
                         <Link to={`/post/${post}/:${user._id}`}>
                             <p style={{ fontSize: '13px' }}>{myPost && myPost.likes && myPost.likes.length} likes</p>
                         </Link>
                     </li>
                     <li >
-                        <AiOutlineDislike />
+                        {
+                            disliked && disliked.length ?
+                                <AiFillDislike onClick={reactionDislike} /> :
+                                < AiOutlineDislike onClick={reactionDislike} />
+                        }
                         <Link to={`/post/${post}/:${user._id}`}>
                             <p style={{ fontSize: '13px' }}>{myPost && myPost.dislikes && myPost.dislikes.length} dislikes</p>
                         </Link>
                     </li>
                     <li onClick={handleComment}>
                         <FaRegComment />
-                            <p style={{ fontSize: '13px' }}>{myPost && myPost.comments && myPost.comments.length} comments</p>
-                       
+                        <p style={{ fontSize: '13px' }}>{myPost && myPost.comments && myPost.comments.length} comments</p>
+
                     </li>
                 </Reactions>}
         </ContainerPost>
     )
-}}
-export default  Posts
+}
+export default Posts

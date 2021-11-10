@@ -29,11 +29,7 @@ const App = () => {
           <GameInfo {...props}/>
         }
         />
-        <Route
-          path='/users'
-          component={UsersLobby}
-        />
-        
+        <Route path='/users' component={UsersLobby}/>
       </Switch>
     </div>
   );
