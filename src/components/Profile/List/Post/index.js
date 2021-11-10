@@ -113,7 +113,7 @@ const Posts = ({ user, post, fetchData }) => {
         <ContainerPost>
             <PostHeader>
                 <div>
-                    <Link to='/profile'><HeaderImage src={user && user.profilePicture} alt='profile image' /></Link>
+                    <HeaderImage src={user && user.profilePicture} alt='profile image' />
                     <ProfileName><b>{user && user.name}</b></ProfileName>
                 </div>
                 <PostOptions onClick={handleForm}>
