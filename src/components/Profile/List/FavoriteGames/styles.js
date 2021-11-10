@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Card = styled.div `
-    width: 50%;
+    width: 100%;
     height: 300px;
-    margin-left:25%;
-   overflow:hidden;
+    overflow:hidden;
     margin-top:10px;
     img{
+
        height: 100%; 
     }
     :hover{

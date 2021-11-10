@@ -10,6 +10,7 @@ import { ImageRight, ImageLeft, Article, Section } from "../GamesInfo/styles";
 import { PageComponent } from "./styles";
 
 import api from "../../api/api";
+import Posts from "../Profile/List/Post";
 
 
 const Feed = () => {
@@ -18,12 +19,16 @@ const Feed = () => {
   const getPosts = async () => {
     try {
       const postsFromDb = await api.getPost();
-      setPosts(postsFromDb);
+      const arrayCopy =[]
+      postsFromDb.forEach((e)=>{
+        if(e._id) arrayCopy.push(e._id);
+        if(!e._id) arrayCopy.push(e);
+      })
+      setPosts(arrayCopy)
     } catch (error) {
       console.log(error);
     }
   };
-
   useEffect(() => {
     getPosts();
   }, []);
@@ -50,9 +55,9 @@ const Feed = () => {
                 <h1>You don't have any posts yet!</h1>
               </div>
               : posts.map((e) => {
-                return <CardPost key={e._id} data={e} getPosts={getPosts} />;
-              })
-            
+                return <Posts/>
+              }
+                )
             }
           </Section>
 

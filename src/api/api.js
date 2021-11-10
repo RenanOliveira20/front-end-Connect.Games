@@ -86,7 +86,7 @@ class api {
     getProfile = async () => {
         try {
             const profile = await this.api.get('/profile',{headers:{
-                Authorization: localStorage.getItem('token')
+                Authorization:localStorage.getItem('token')
             }})
             return profile.data
         } catch (error) {
