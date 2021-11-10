@@ -12,59 +12,66 @@ import Follow from './Follow';
 import Footer from '../Footer'
 
 import { FollowContainer, ProfileCard, Container, UserConfig, CountValues, ImageContainer } from './styles';
-
+import { PageComponent, ImageRight, Article, Section, ImageLeft} from '../GamesInfo/styles'
 
 const Profile = () => {
     const [profile, setProfile] = useState();
     const history = useHistory();
 
-    const validate = async (data) => {
-        if (!data) history.push('/');
-        return true
-    }
-
     const fetchData = async () => {
-        const data = await api.getProfile();
-        
-            if (validate(data)) {
-                setProfile({ ...profile, ...data })
-            }
+        try {
+            const data = await api.getProfile();
+            setProfile(data)
+        } catch (error) {
+            
+        }
     }
     useEffect(() => {
         fetchData()
     }, []);
 
     return (
-
     <>
-        <Nav />
-                <ProfileCard>
-                    <Container>
+            <Nav />
+            <PageComponent>
 
-                        <ImageContainer>
-                        {profile && profile.profilePicture && <Image roundedCircle src={profile.profilePicture}alt='image profile' />}
-                            <p style={{fontSize : '25px'}}><b>{profile && profile.name}</b></p>
-                            {profile && profile.biography ? <p>{profile.biography}</p> : <Button variant='outline-danger' style={{ width: '80%', marginLeft: '10%' , fontSize: '12px'}}>Biography &ensp;<BsFillPencilFill /></Button>}
-                        </ImageContainer>
-                        
-                        <FollowContainer>
-                            <UserConfig>
-                                <p><b>{profile && profile.username}</b></p>
-                                <Button variant='outline-dark' style={{fontSize: '15px'}}>Edit Profile &ensp;<GrConfigure /></Button>
-                            </UserConfig>
-                            <CountValues>
-                                <Follow name='Posts' value={profile ? profile.posts.length : null} />
-                                <Follow name='Followers' value={profile ? profile.followers.length : null} />
-                                <Follow name='Following' value={profile ? profile.following.length : null} />
-                                <Follow name='Favorite Games' value={profile ? profile.favoriteGames.length : null} />
-                            </CountValues>
-                        </FollowContainer>
+                <ImageRight/>
 
+                <Article>
+                    <Section>
+                        <Container>
+                            <ImageContainer>
+                            {profile && profile.profilePicture && <Image roundedCircle src={profile.profilePicture}alt='image profile' />}
+                                <p style={{fontSize : '25px'}}><b>{profile && profile.name}</b></p>
+                                {profile && profile.biography ? <p>{profile.biography}</p> : <Button variant='outline-danger' style={{ width: '80%', marginLeft: '10%' , fontSize: '12px'}}>Biography &ensp;<BsFillPencilFill /></Button>}
+                            </ImageContainer>
+                            
+                            <FollowContainer>
+                                <UserConfig>
+                                    <p><b>{profile && profile.username}</b></p>
+                                    <Button variant='outline-dark' style={{fontSize: '15px'}}>Edit Profile &ensp;<GrConfigure /></Button>
+                                </UserConfig>
+                                <CountValues>
+                                    <Follow name='Posts' value={profile ? profile.posts.length : null} />
+                                    <Follow name='Followers' value={profile ? profile.followers.length : null} />
+                                    <Follow name='Following' value={profile ? profile.following.length : null} />
+                                    <Follow name='Favorite Games' value={profile ? profile.favoriteGames.length : null} />
+                                </CountValues>
+                            </FollowContainer>
                         </Container>
-                </ProfileCard>
-                    <List user={profile} fetchData={fetchData}/>
-                <Footer/>
-    </>
+                    </Section>
+
+                    <Section>
+                        <List user={profile} fetchData={fetchData}/>
+                    </Section>
+                </Article>
+
+                <ImageLeft/>
+                
+            </PageComponent>
+            <Footer/>
+        </>
+
     );
 }
 

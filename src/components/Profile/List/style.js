@@ -5,8 +5,8 @@ import {BsBookmarkStarFill} from 'react-icons/bs'
 export const ListContainer = styled.div`
     margin-top: 1%;
     height: 50px;
-    width: 50%;
-    margin-left: 25%;
+    width: 100%;
+   
     background-color: grey;
     border-bottom: 1px solid lightgrey; 
     display: flex;

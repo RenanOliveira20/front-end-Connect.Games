@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const ContainerPost = styled.div`
-    width: 50%;
+    width: 100%;
     margin-top: 1%;
     margin-bottom: 1%;
-    margin-left: 25%;
     background-color: lightgrey;
     @media screen and (max-width: 400px){
         width:100%;
@@ -13,13 +12,13 @@ export const ContainerPost = styled.div`
 `
 export const PostHeader = styled.header`
     width: 100%;
-    height: 50px;
+    height: 60px;
     display: flex;
     justify-content : space-between;
     div{
-        width: 50%;
+        width: 100%;
         height: 90%;
-        margin-top: 10px;
+        margin-top: 3px;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -57,6 +56,7 @@ export const ProfileName = styled.p`
 `;
 export const PostOptions = styled.ul`
     position: relative;
+    height: 100%;
     width: 25%;
     font-size: 25px;
     ul{font-size: 16px;
@@ -102,9 +102,9 @@ export const PostOptions = styled.ul`
     
 `;
 export const PostBody = styled.div`
+min-height: 100px;
         margin-top : 25px;
         width: 100%;
-        height : 100%;
 `
 export const BodyImage = styled.div`
         margin: 10px 0 10px 0;

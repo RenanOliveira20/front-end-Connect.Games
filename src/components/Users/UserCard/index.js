@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import api from '../../../api/api'
 
 import { Card, UserContainer, UserDiv} from './styles'
 
@@ -6,6 +7,7 @@ const UserCard = (props) => {
 
     return(
         <Card>
+           
             <UserContainer>
                 <img src={`${props.profilePicture}`} alt={`${props.name}`}/>
                 <a href={`/profile/${props._id}`}>{props.username}</a>
